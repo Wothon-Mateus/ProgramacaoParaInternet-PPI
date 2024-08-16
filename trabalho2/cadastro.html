@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="pt-br">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho 2</title>
+</head>
+<body>
+    
+    <header>
+        <h1>Clinica ABC Health</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" target="_blank">Home</a></li> 
+            <li><a href="galeria.html" target="_blank">Galeria</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>                                                        
+        </ul>
+    </nav>
+
+    <main>  
+        <h2>Faça o seu cadastro na clinica ABC</h2>
+
+        <form action="cadastraPaciente.php" method="post">
+
+            <div>
+                <label for="nome">Nome completo:</label>
+                <input type="text" name="nome" id="nome">
+            </div>
+
+            <div>
+                <label for="endereco">Endereço:</label>
+                <input type="text" name="endereco" id="endereco">
+            </div>
+
+            <div>
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email">
+            </div>
+
+            <fieldset>
+                <legend>Sexo:</legend>
+                <div>
+                    <input type="radio" name="sexo" id="masculino" value="masculino">
+                    <label for="masculino">Masculino</label>
+                </div>
+                <div>
+                    <input type="radio" name="sexo" id="feminino" value="feminino">
+                    <label for="feminino">Feminino</label>
+                </div>
+                <div>
+                    <input type="radio" name="null" id="null" value="null">
+                    <label for="null">Prefiro não informar</label>
+                </div>
+
+            </fieldset>
+
+            <button><input type="reset">Limpar</button>
+
+            <button>Cadastrar</button>
+
+
+        </form>
+
+    </main>
+
+    <footer>
+        <address>
+            <p>Rua: Lucas alves Bairro: Jardim Boa Vista 58 / Uberlandia MG</p>
+        </address>
+    </footer>
+
+</body>
+</html>
