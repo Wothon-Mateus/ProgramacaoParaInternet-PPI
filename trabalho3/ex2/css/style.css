@@ -1,0 +1,59 @@
+nav {  
+
+    border: 3px solid rgb(0, 255, 98);
+}
+
+
+input:invalid + span::after {
+    content: '✖';
+    color: red;
+}
+
+input:valid + span::after {
+    content: '✓';
+    color: rgb(214, 252, 0);
+}
+
+#pric{
+    color: blueviolet;
+}
+
+.estiloH3 {
+    color: olive;
+
+}
+
+main p {
+    font-family:'Times New Roman', Times, serif;
+    text-align: justify;
+    background-color: #ddd;
+}
+
+h3 + p {
+    color: blue;
+}
+
+
+a:hover{
+    background-color: yellow;
+}
+
+main:has(h2){
+    background-color: rgb(0, 255, 98);
+}
+
+:is(article) :is(h3){
+    background-color: rgb(255, 0, 140);
+}
+
+p:first-child {
+
+    color: red;
+}
+
+h1:first-of-type {
+    text-align: center;
+}
+
+
+

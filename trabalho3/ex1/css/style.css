@@ -1,0 +1,35 @@
+
+body {
+
+    
+
+    font-size: 1,5;
+
+    font-family: helvetica;
+
+    background-color: #444;
+
+    width: 60%;
+
+    margin: 0 auto;
+
+    padding: 2% 0;
+
+    
+
+}
+
+main{
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    color: rgb(140, 74, 8);
+}
+
+section {
+    margin-top: 0px;
+    padding-bottom: 5px;
+    border-top: solid 1px gray
+}
