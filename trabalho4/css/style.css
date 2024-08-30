@@ -14,8 +14,8 @@ main {
 
 header {
     text-align:center;
-    position: sticky;
-    top: 0;
+    /* position: sticky;
+    top: 0; */
     margin-top: 5px;
 }
 
@@ -29,9 +29,15 @@ nav li{
     padding: 10px;
 }
 
+header nav {
+    position: sticky;
+    top: 0;
+
+}
 nav {
     background-color: #5a5757;
     margin: 10px;
+
 }
 
 main h2, h3 {
@@ -141,10 +147,11 @@ button {
     background-color: #e6e6e6; 
     border-radius: 4px; 
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.material-icons{
+
+
+.material-symbols-outlined{
     vertical-align: middle;
 }
 
