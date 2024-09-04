@@ -40,7 +40,7 @@ main {
     justify-content: space-between;
     max-width: 220px;
     border-radius: 10px;
-   
+    /* overflow: hidden; Não mostra todo texto */
 }
 
 
