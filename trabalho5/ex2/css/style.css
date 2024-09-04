@@ -1,0 +1,51 @@
+body {
+    background-color: #a8a3a3;
+    
+}
+
+header {
+    width: 100%;
+    background-color: rgb(87, 73, 73);
+    color: beige;
+    text-align: center;
+    
+}
+
+
+
+.red {
+    color: red;
+    
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+    
+}
+
+.card {
+
+    height: 350px;
+    width: 250px;
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 220px;
+    border-radius: 10px;
+    /* overflow: hidden; Não mostra todo texto */
+}
+
+
+.card img {
+    border-radius: 10px;
+    max-width: 100%;
+}
+
