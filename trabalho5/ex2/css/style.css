@@ -19,33 +19,41 @@ header {
 }
 
 main {
+
+    /* Não deixa o elemento os elemento sair do card*/
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto; /* Alinhamento */
     padding: 1rem;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;  /* quebra o elemento*/
     justify-content: space-evenly;
-    gap: 20px;
+    gap: 20px; /* Espaço entre cada card*/
     
 }
 
 .card {
 
-    height: 350px;
-    width: 250px;
+    flex-basis: 250px; /* Não deixa o elemento os elemento sair do card*/
+    max-width: 350px; /* Não deixa o elemento os elemento sair do card*/
     background-color: white;
     padding: 1rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Muda a direção*/
     justify-content: space-between;
-    max-width: 220px;
     border-radius: 10px;
-    /* overflow: hidden; Não mostra todo texto */
 }
 
 
 .card img {
     border-radius: 10px;
-    max-width: 100%;
+    width: 100%;
 }
+
+@media (max-width: 600px) {
+
+    main {
+        width: 95%;
+    }
+}
+
 
