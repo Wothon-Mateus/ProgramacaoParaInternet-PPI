@@ -1,2 +1,2 @@
 # ProgramacaoParaInternet-PPI
- Todos os trabalhos realizado da materia durante o periodo
+ Todos os trabalhos realizado da materia durante o periodo da facudade
