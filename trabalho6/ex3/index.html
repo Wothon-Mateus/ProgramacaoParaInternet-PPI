@@ -4,10 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 03</title>
+
+
+    <script src="js/scripts.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
     
-    <input type="" name="" id="">
+    <h1>Calculadora de Peso Ideal</h1>
+    <form id="pesoIdealForm">
+        <label for="altura">Altura (em cm):</label>
+        <input type="number" id="altura" name="altura" required>
+
+        <label for="sexo">Gênero:</label>
+        <select id="sexo" name="sexo" required>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+        </select>
+
+        <button type="button" onclick="calcularPesoIdeal()">Calcular</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script src="script.js"></script>
+
+
+    <div class="galeria">
+        <img src="img/Captura01.png" alt="" height="500px" width="800px">
+        <img src="img/Captura02.png" alt="" height="500px" width="800px">
+        <img src="img/Captura03.png" alt="" height="500px" width="800px">
+        <img src="img/Captura04.png" alt="" height="500px" width="800px">
+        <img src="img/Captura05.png" alt="" height="500px" width="800px">
+    
+    </div>
 
 </body>
 </html>
