@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+</head>
+
+<body>
+
+    <h1>Exemplicação da saida no slide 38</h1>
+
+    <h2>Nós filhos de body:</h2>
+
+    <p>O loop for (let node of document.body.childNodes) percorre todos os nós filhos do elemento body. Esses nós podem
+        ser elementos HTML, nós de texto ou comentários.</p>
+    <p>Para cada nó, o código acessa o protótipo do construtor desse nó (node.constructor.prototype) e adiciona isso ao
+        conteúdo de texto do elemento com id="output". O protótipo indica a classe ou interface à qual o nó pertence.
+    </p>
+
+    <h2>Com instanceof:</h2>
+
+    <p>Após o loop, o código realiza verificações de tipo usando o operador instanceof para verificar se o elemento
+        input (selecionado com document.querySelector("#myInput")) é uma instância de várias classes/interfaces do
+        DOM. O resultado dessa analise ira retornar se true ou false, dependendo de a instância pertencer ou não àquela
+        classe</p>
+
+    <h2>Significa das linhas de saida</h2>
+
+    <p>Linha de saida 1: O primeiro nó encontrado no body é um nó de texto. Isso se refere ao espaço em branco entre o
+        h1 e o
+        início do próximo elemento. Por essa razão o retorno e [object Text]</p>
+
+    <p>Linha de saida 2 : O segundo nó é um elemento de cabeçalho h1, que é uma instância da classe HTMLHeadingElement.
+        Por essa razão o retorno e [bject HTMLHeadingElement]</p>
+
+    <p>Linha de saida 3: O próximo nó é novamente um nó de texto, que é o espaço entre o fechamento da tag h1 e o início
+        da próxima tag. Por essa razão o retorno e [object Text]</p>
+
+    <p>Linha de saida 4: Este nó é o elemento input, que é uma instância da classe HTMLInputElement. Por essa razão o
+        retorno e [bject HTMLHeadingElement]</p>
+
+    <p>Linha de saida 5: Este nó é um comentário no HTML (comentário), representado como um objeto de tipo
+        Comment na árvore DOM. Por essa razão o retorno e [object Comment] </p>
+
+    <P> Linha de saida 6 ate a ultima: As próximas cinco linhas são verificações do nó input para ver se ele é uma
+        instância de várias classes/interfaces</P>
+
+</body>
+
+</html>
