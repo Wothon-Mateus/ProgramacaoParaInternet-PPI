@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <h2>Cadastro de Usuário</h2>
+
+        <form id="cadastroForm" action="">
+
+            
+            <div>
+                <label for="nome">Usuário:</label>
+                <input type="text" name="nome" id="nome">
+                <span class="erro" id="erroNome"></span> 
+            </div>
+
+            
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha">
+                <span class="erro" id="erroSenha"></span> 
+            </div>
+
+            
+            <div>
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email">
+                <span class="erro" id="erroEmail"></span> <!-- Exibe a mensagem de erro -->
+            </div>
+
+            <button type="submit">Cadastrar</button>
+
+        </form>
+    </main>
+</body>
+
+</html>
