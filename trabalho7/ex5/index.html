@@ -4,103 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Trabalho 7/ex5</title>
+    <title>Trabalho 7/ex5</title>
 
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/scripts.js"></script>
-
+    <script src="js/scripts.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <nav id="navbar">
-            <div id="navbar-inner">
-                <h2>Blog</h2>
-                <ul id="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Categorias</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main id="posts-container">
-            <article class="post">
-                <img src="img/f1.jpg" alt="Passeio de barco">
-                <h3 class="title"><a href="#">Algum título</a></h3>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae fugit placeat
-                    praesentium vitae, quod nobis magni debitis quaerat corrupti ab quisquam laudantium odit rem nulla
-                    consequuntur quibusdam officia iusto id.</p>
-                <p class="author">Por: Wothon Mateus de Araujo</p>
-                <a href="#">Ler mais</a>
-            </article>
-            <article class="post">
-                <img src="img/f2.jpg" alt="Cachoeira">
-                <h3 class="title"><a href="#">Outro título</a></h3>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae fugit placeat
-                    praesentium vitae, quod nobis magni debitis quaerat corrupti ab quisquam laudantium odit rem nulla
-                    consequuntur quibusdam officia iusto id.</p>
-                <p class="author">Por: Wothon Mateus de Araujo</p>
-                <a href="#">Ler mais</a>
-            </article>
-            <article class="post">
-                <img src="img/f3.jpg" alt="Balões">
-                <h3 class="title"><a href="#">Mais um blog post</a></h3>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae fugit placeat
-                    praesentium vitae, quod nobis magni debitis quaerat corrupti ab quisquam laudantium odit rem nulla
-                    consequuntur quibusdam officia iusto id.</p>
-                <p class="author">Por: Wothon Mateus de Araujo</p>
-                <a href="#">Ler mais</a>
-            </article>
-        </main>
 
-        <div id="modalTeste" class="modal">
+    <button type="button" id="buttonOpenModal">Abrir Modal</button>
 
-            <div class="modalContent">
-                <h2>Olá! Seja bem vendo!</h2>
-                <button class="buttorClose">ok</button>
-            </div>
-
+    <div id="modalTeste" class="modal" style="display: none;">
+        <div class="modalContent">
+            <h2>Olá! Seja bem-vindo!</h2>
+            <button class="buttonClose">OK</button>
         </div>
-        <aside id="sidebar">
-            <section id="search-bar">
-                <h4>Busca</h4>
-                <form action="">
-                    <input type="text" placeholder="Pesquise um blog">
-                    <input type="submit" value="Buscar">
-                </form>
-            </section>
-            <section id="categories">
-                <h4>Categorias</h4>
-                <nav>
-                    <ul>
-                        <li><a href="#">Paisagens</a></li>
-                        <li><a href="#">Aventura</a></li>
-                        <li><a href="#">Viagens longas</a></li>
-                        <li><a href="#">Cachoeiras</a></li>
-                    </ul>
-                </nav>
-            </section>
-            <section id="tags">
-                <h4>Tags</h4>
-                <div id="tags-container">
-                    <a href="#">Lifestyle</a>
-                    <a href="#">Viagem</a>
-                    <a href="#">Barco</a>
-                    <a href="#">Trilha</a>
-                    <a href="#">Tirolesa</a>
-                    <a href="#">Rafting</a>
-                    <a href="#">Parapente</a>
-                </div>
-            </section>
-        </aside>
     </div>
-    <footer id="footer">
-        <h2>Blog</h2>
-        <p>Os melhores registros de aventuras</p>
-        <p>2023 &copy; Hora de Codar</p>
-    </footer>
+
+    
+
 </body>
 
 </html>

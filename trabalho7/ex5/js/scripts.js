@@ -1,15 +1,16 @@
 
 window.onload = function () {
     const modal = document.querySelector(".modal");
-    const buttonClose = modal.querySelector(".buttonclose");
+    const buttonClose = modal.querySelector(".buttonClose");
 
+    // Fechar o modal ao clicar no botão de fechar
     buttonClose.addEventListener("click", function () {
-        modal.style.display = 'nome';
+        modal.style.display = 'none';
     });
 
-    const buttoOpenModal = document.getElementById("buttoOpenModal");
-    buttoOpenModal.addEventListener("click" , function (){
+    const buttonOpenModal = document.getElementById("buttonOpenModal");
+    // Abrir o modal ao clicar no botão de abrir
+    buttonOpenModal.addEventListener("click", function () {
         modal.style.display = 'block';
-    })
-
+    });
 }
