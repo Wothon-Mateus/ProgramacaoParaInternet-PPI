@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Anúncios</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>TurboCarros</h1>
+            <p>Gerencie seus anúncios facilmente!</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Página Principal</a></li>
+            <li><a href="criar-anuncio.html">Criar Anúncio</a></li>
+            <li><a href="logout.html">Sair</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="listagem-anuncios">
+            <h2>Meus Anúncios</h2>
+
+            <!-- Exemplo de Card de Anúncio -->
+            <div class="anuncio-card">
+                <img src="img/2018-04-19-new-fiesta-ecoboost-style-exterior-11.avif" alt="Foto do veículo">
+                <div class="anuncio-info">
+                    <h3>Toyota Corolla</h3>
+                    <p>Ano: 2018</p>
+                    <div class="anuncio-acoes">
+                        <a href="visualizar-anuncio.html" class="btn btn-detalhes">Ver Detalhes</a>
+                        <a href="interesses.html" class="btn btn-interesses">Ver Interesses</a>
+                        <button class="btn btn-excluir" onclick="excluirAnuncio(1)">Excluir</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adicionar outros anúncios da mesma forma -->
+        </section>
+    </main>
+
+</body>
+</html>

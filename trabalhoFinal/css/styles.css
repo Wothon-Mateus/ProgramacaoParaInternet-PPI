@@ -345,6 +345,84 @@ button:hover {
 }
 
 
+/* Gerenciar os anúncios */
+
+.anuncio-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.anuncio-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
+}
+
+.anuncio-card img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.anuncio-info {
+    flex: 1;
+}
+
+.anuncio-info h3 {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.anuncio-info p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.anuncio-acoes {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-detalhes {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-interesses {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-excluir {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 
 
 /* Responsividade */
