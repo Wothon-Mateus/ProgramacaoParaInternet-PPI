@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Anúncios de Veículos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">
+            <h1>TurboCarros</h1>
+            <p>Velocidade na hora de vender ou comprar!</p>
+        </div>
+    </header>
+
+    <!-- Barra de Navegação -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Página Principal</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+            <li><a href="login.html">Login</a></li>
+            <!-- Links exibidos após login -->
+            <li><a href="meus-anuncios.html">Meus Anúncios</a></li>
+            <li><a href="criar-anuncio.html">Criar Anúncio</a></li>
+            <li><a href="logout.html">Sair</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <section id="busca">
+            <h2>Encontre o veículo ideal</h2>
+            <form action="#" method="get">
+                <label for="marca">Marca:</label>
+                <select id="marca" name="marca">
+                    <option value="ford">Ford</option>
+                    <option value="chevrolet">Chevrolet</option>
+                    <option value="toyota">Toyota</option>
+                    <!-- Outras marcas -->
+                </select>
+
+                <label for="modelo">Modelo:</label>
+                <select id="modelo" name="modelo">
+                    <option value="fiesta">Fiesta</option>
+                    <option value="corolla">Corolla</option>
+                    <option value="civic">Civic</option>
+                    <!-- Outros modelos -->
+                </select>
+
+                <label for="localizacao">Localização:</label>
+                <select id="localizacao" name="localizacao">
+                    <option value="uberlandia">Uberlândia</option>
+                    <option value="belo-horizonte">Belo Horizonte</option>
+                    <option value="sao-paulo">São Paulo</option>
+                    <!-- Outras cidades -->
+                </select>
+
+                <button type="submit">Buscar</button>
+            </form>
+        </section>
+
+        <!-- Cards de Anúncios de Veículos -->
+        <section id="anuncios">
+            <h2>Anúncios Recentes</h2>
+            <div class="card">
+                <img src="carro1.jpg" alt="Imagem do carro">
+                <h3>Ford Fiesta 2020</h3>
+                <p>Uberlândia, MG</p>
+                <p>R$ 45.000</p>
+            </div>
+
+            <div class="card">
+                <img src="carro2.jpg" alt="Imagem do carro">
+                <h3>Chevrolet Onix 2019</h3>
+                <p>Belo Horizonte, MG</p>
+                <p>R$ 50.000</p>
+            </div>
+
+            <!-- Outros cards de anúncios -->
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 Turbo Carros. Todos os direitos reservados.</p>
+        <p>Contatos: contato@turbocarros.com | (34) 99999-9999</p>
+    </footer>
+</body>
+</html>
