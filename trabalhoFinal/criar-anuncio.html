@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Anúncio - Portal de Veículos</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js" defer></script>
+
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>TurboCarros</h1>
+            <p>Velocidade na hora de vender ou comprar!</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Página Principal</a></li>
+            <li><a href="meus-anuncios.html">Meus Anúncios</a></li>
+            <li><a href="logout.html">Sair</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <form id="formAnuncio">
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" placeholder="Ex: Toyota" required>
+
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" placeholder="Ex: Corolla" required>
+
+            <label for="ano">Ano de Fabricação:</label>
+            <input type="number" id="ano" placeholder="Ex: 2018" required>
+
+            <label for="cor">Cor:</label>
+            <input type="text" id="cor" placeholder="Ex: Preto" required>
+
+            <label for="quilometragem">Quilometragem (KM):</label>
+            <input type="number" id="quilometragem" placeholder="Ex: 50000" required>
+
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" placeholder="Descreva o veículo" required></textarea>
+
+            <label for="valor">Valor (R$):</label>
+            <input type="number" id="valor" placeholder="Ex: 50000" required>
+
+            <label for="estado">Estado:</label>
+            <select id="estado" required>
+                <option value="">Selecione o estado</option>
+                <option value="MG">MG</option>
+                <option value="SP">SP</option>
+                <option value="RJ">RJ</option>
+                <option value="RS">RS</option>
+                <!-- Adicione mais opções de estado conforme necessário -->
+            </select>
+
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" placeholder="Ex: Belo Horizonte" required>
+
+            <label for="fotos">Fotos do Veículo (mínimo 3):</label>
+            <input type="file" id="fotos" multiple required>
+
+            <button id ="buttonAnucio" type="submit">Criar Anúncio</button>
+        </form>
+
+        <div id="mensagemAnuncio"></div>
+    </main>
+
+    
+
+</body>
+</html>

@@ -202,6 +202,151 @@ footer p a:hover {
     text-decoration: underline;
 }
 
+
+/* Formulário de Cadastro */
+#cadastro {
+    background-color: #fff;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 500px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+#cadastro h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #007bff;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+
+
+/* Seção de Login */
+#login {
+    background-color: #fff;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 500px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+#login h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #007bff;
+    text-align: center;
+}
+
+
+/* Criar Anuncio */
+
+#formAnuncio {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#formAnuncio label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+}
+
+#formAnuncio  input, #formAnuncio  select, #formAnuncio  textarea {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+#formAnuncio  input:focus, #formAnuncio  select:focus, #formAnuncio  textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+#formAnuncio  textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+#buttonAnucio {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#buttonAnucio:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+
+
+#mensagemAnuncio {
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
 /* Responsividade */
 @media (max-width: 768px) {
     nav ul {
