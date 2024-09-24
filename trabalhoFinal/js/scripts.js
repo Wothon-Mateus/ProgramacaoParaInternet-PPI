@@ -46,6 +46,14 @@ document.getElementById('form-login')?.addEventListener('submit', function(event
     }
 });
 
+// Função para verificar se o usuário está logado
+function verificarLogin() {
+    if (!sessionStorage.getItem('logado')) {
+        alert("Você precisa estar logado para acessar essa página.");
+        window.location.href = "login.html"; // Redireciona para a página de login
+    }
+}
+
 // @@@@@@@@@@@@@@@@@@@@@@@@@
 
 // 2.4 - Registro de Interesse
@@ -63,9 +71,10 @@ document.getElementById('formInteresse')?.addEventListener('submit', function(ev
     }
 });
 
-// 2.6 - Criação de Anúncio de Veículo
+/// 2.6 - Criação de Anúncio de Veículo
 document.getElementById('form-anuncio')?.addEventListener('submit', function(event) {
     event.preventDefault();
+
     const marca = document.getElementById('marca').value;
     const modelo = document.getElementById('modelo').value;
     const ano = document.getElementById('ano').value;
@@ -78,12 +87,82 @@ document.getElementById('form-anuncio')?.addEventListener('submit', function(eve
     const fotos = document.getElementById('fotos').files;
 
     if (marca && modelo && ano && cor && quilometragem && descricao && valor && estado && cidade && fotos.length >= 3) {
+        const anuncios = JSON.parse(localStorage.getItem('anuncios')) || [];
+
+        const novoAnuncio = {
+            marca,
+            modelo,
+            ano,
+            cor,
+            quilometragem,
+            descricao,
+            valor,
+            estado,
+            cidade,
+            fotos: URL.createObjectURL(fotos[0]), // Apenas a primeira foto será mostrada
+            interesses: [] // Inicializa os interesses como vazio
+        };
+
+        anuncios.push(novoAnuncio);
+        localStorage.setItem('anuncios', JSON.stringify(anuncios));
+
         alert("Anúncio criado com sucesso!");
-        // Simulação de criação de anúncio
+        window.location.href = "meus-anuncios.html"; // Redireciona para a listagem de anúncios
     } else {
-        alert("Preencha todos os campos e envie ao menos 3 fotos.");
+        alert("Preencha todos os campos e envie pelo menos 3 fotos.");
     }
 });
+
+// 2.7 - Listagem de Anúncios
+function carregarAnuncios() {
+    const anuncios = JSON.parse(localStorage.getItem('anuncios')) || [];
+    const container = document.querySelector('.anuncios-listagem');
+    container.innerHTML = ''; // Limpa o container antes de carregar
+
+    anuncios.forEach((anuncio, index) => {
+        const card = `
+            <div class="anuncio-card">
+                <img src="${anuncio.fotos}" alt="Foto do veículo">
+                <div class="anuncio-info">
+                    <h3>${anuncio.marca} ${anuncio.modelo} - ${anuncio.ano}</h3>
+                    <p><strong>Cor:</strong> ${anuncio.cor}</p>
+                    <p><strong>Quilometragem:</strong> ${anuncio.quilometragem}</p>
+                    <p><strong>Valor:</strong> R$${anuncio.valor}</p>
+                </div>
+                <div class="anuncio-acoes">
+                    <button class="btn-detalhes" onclick="exibirDetalhes(${index})">Detalhes</button>
+                    <button class="btn-interesses" onclick="exibirInteresses(${index})">Interesses</button>
+                    <button class="btn-excluir" onclick="excluirAnuncio(${index})">Excluir</button>
+                </div>
+            </div>
+        `;
+        container.innerHTML += card;
+    });
+}
+
+function exibirDetalhes(index) {
+    const anuncios = JSON.parse(localStorage.getItem('anuncios')) || [];
+    const anuncio = anuncios[index];
+
+    document.getElementById('detalhesMarca').innerText = anuncio.marca;
+    document.getElementById('detalhesModelo').innerText = anuncio.modelo;
+    document.getElementById('detalhesAno').innerText = anuncio.ano;
+    document.getElementById('detalhesCor').innerText = anuncio.cor;
+    document.getElementById('detalhesQuilometragem').innerText = anuncio.quilometragem;
+    document.getElementById('detalhesEstado').innerText = anuncio.estado;
+    document.getElementById('detalhesCidade').innerText = anuncio.cidade;
+    document.getElementById('detalhesDescricao').innerText = anuncio.descricao;
+    document.getElementById('detalhesValor').innerText = `R$ ${anuncio.valor}`;
+
+    window.location.href = "detalhes-anuncio.html"; // Redireciona para a página de detalhes
+}
+
+// Carrega os anúncios ao abrir a página de listagem
+if (window.location.pathname.includes('meus-anuncios.html')) {
+    carregarAnuncios();
+}
+
+
 
 // 2.7 - Listagem de Anúncios
 document.querySelectorAll('.btn-detalhes')?.forEach(button => {

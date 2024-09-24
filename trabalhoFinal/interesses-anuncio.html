@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Interesse - TurboCarros</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>TurboCarros</h1>
+        <p>Deixe sua mensagem de interesse no veículo!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Registre seu Interesse</h2>
+        <form id="formInteresse">
+            <label for="nomeInteresse">Nome Completo:</label>
+            <input type="text" id="nomeInteresse" placeholder="Digite seu nome" required>
+
+            <label for="telefoneInteresse">Telefone:</label>
+            <input type="tel" id="telefoneInteresse" placeholder="Digite seu telefone" required>
+
+            <label for="mensagemInteresse">Mensagem:</label>
+            <textarea id="mensagemInteresse" placeholder="Digite sua mensagem" required></textarea>
+
+            <button type="submit">Enviar Interesse</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TurboCarros - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
