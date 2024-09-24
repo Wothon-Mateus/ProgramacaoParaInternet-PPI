@@ -1,7 +1,22 @@
-// Cadastro 
+// Funções comuns para todas as páginas (como navegação e logoff)
+document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', function(event) {
+        // Prevenir comportamento padrão e redirecionar de forma suave
+        event.preventDefault();
+        window.location.href = link.getAttribute('href');
+    });
+});
 
-document.getElementById('formCadastro').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evita o envio do formulário
+// Função de logout simulada
+function logoff() {
+    if (confirm("Tem certeza que deseja sair?")) {
+        window.location.href = "logout.html"; // Redireciona para logout
+    }
+}
+
+// 2.2 - Cadastro de Usuário
+document.getElementById('form-cadastro')?.addEventListener('submit', function(event) {
+    event.preventDefault();
     const nome = document.getElementById('nome').value;
     const cpf = document.getElementById('cpf').value;
     const email = document.getElementById('email').value;
@@ -9,40 +24,48 @@ document.getElementById('formCadastro').addEventListener('submit', function(even
     const telefone = document.getElementById('telefone').value;
 
     if (nome && cpf && email && senha && telefone) {
-        document.getElementById('mensagem').innerHTML = "Cadastro realizado com sucesso!";
-        document.getElementById('mensagem').style.color = "green";
-        // Aqui você pode adicionar a lógica de armazenamento ou integração com o back-end
+        alert("Cadastro realizado com sucesso!");
+        // Aqui você pode redirecionar para a página de login
+        window.location.href = "login.html";
     } else {
-        document.getElementById('mensagem').innerHTML = "Por favor, preencha todos os campos corretamente.";
-        document.getElementById('mensagem').style.color = "red";
+        alert("Preencha todos os campos.");
     }
 });
 
-// Logim 
-
-document.getElementById('formLogin').addEventListener('submit', function(event) {
+// 2.3 - Login
+document.getElementById('form-login')?.addEventListener('submit', function(event) {
     event.preventDefault();
     const email = document.getElementById('emailLogin').value;
     const senha = document.getElementById('senhaLogin').value;
 
-    // Validação básica de login
-    if (email === "user@exemplo.com" && senha === "1234") {
-        document.getElementById('mensagemLogin').innerHTML = "Login realizado com sucesso!";
-        document.getElementById('mensagemLogin').style.color = "green";
-        window.location.href = "painel-interno.html"; // Redirecionamento para o painel interno
+    if (email === "teste@gmail.com" && senha === "senha123") {
+        alert("Login realizado com sucesso!");
+        window.location.href = "painel-interno.html"; // Redireciona para área restrita
     } else {
-        document.getElementById('mensagemLogin').innerHTML = "Email ou senha incorretos.";
-        document.getElementById('mensagemLogin').style.color = "red";
+        alert("Credenciais inválidas.");
     }
 });
 
+// @@@@@@@@@@@@@@@@@@@@@@@@@
 
-// Criar Anuncio.
+// 2.4 - Registro de Interesse
+document.getElementById('formInteresse')?.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const nome = document.getElementById('nomeInteresse').value;
+    const telefone = document.getElementById('telefoneInteresse').value;
+    const mensagem = document.getElementById('mensagemInteresse').value;
 
-document.getElementById('formAnuncio').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evita o envio do formulário padrão
+    if (nome && telefone && mensagem) {
+        alert("Mensagem de interesse enviada com sucesso!");
+        // Simulação de envio da mensagem ao dono do anúncio
+    } else {
+        alert("Por favor, preencha todos os campos.");
+    }
+});
 
-    // Capturando os valores dos campos
+// 2.6 - Criação de Anúncio de Veículo
+document.getElementById('form-anuncio')?.addEventListener('submit', function(event) {
+    event.preventDefault();
     const marca = document.getElementById('marca').value;
     const modelo = document.getElementById('modelo').value;
     const ano = document.getElementById('ano').value;
@@ -54,23 +77,79 @@ document.getElementById('formAnuncio').addEventListener('submit', function(event
     const cidade = document.getElementById('cidade').value;
     const fotos = document.getElementById('fotos').files;
 
-    // Verificando se os campos estão preenchidos corretamente
-    if (marca && modelo && ano && cor && quilometragem && descricao && valor && estado && cidade) {
-        if (fotos.length >= 3) {
-            document.getElementById('mensagemAnuncio').innerHTML = "Anúncio criado com sucesso!";
-            document.getElementById('mensagemAnuncio').style.color = "green";
-            // Aqui você pode adicionar a lógica de envio dos dados para o back-end
-        } else {
-            document.getElementById('mensagemAnuncio').innerHTML = "Por favor, envie pelo menos 3 fotos do veículo.";
-            document.getElementById('mensagemAnuncio').style.color = "red";
-        }
+    if (marca && modelo && ano && cor && quilometragem && descricao && valor && estado && cidade && fotos.length >= 3) {
+        alert("Anúncio criado com sucesso!");
+        // Simulação de criação de anúncio
     } else {
-        document.getElementById('mensagemAnuncio').innerHTML = "Preencha todos os campos obrigatórios.";
-        document.getElementById('mensagemAnuncio').style.color = "red";
+        alert("Preencha todos os campos e envie ao menos 3 fotos.");
     }
 });
 
+// 2.7 - Listagem de Anúncios
+document.querySelectorAll('.btn-detalhes')?.forEach(button => {
+    button.addEventListener('click', function() {
+        window.location.href = "detalhes-anuncio.html"; // Redireciona para página de detalhes
+    });
+});
 
+document.querySelectorAll('.btn-interesses')?.forEach(button => {
+    button.addEventListener('click', function() {
+        window.location.href = "interesses-anuncio.html"; // Redireciona para página de interesses
+    });
+});
 
+document.querySelectorAll('.btn-excluir')?.forEach(button => {
+    button.addEventListener('click', function() {
+        if (confirm("Tem certeza que deseja excluir este anúncio?")) {
+            alert("Anúncio excluído com sucesso!"); // Simula exclusão
+            this.closest('.anuncio-card').remove(); // Remove o card da listagem
+        }
+    });
+});
 
+// 2.8 - Exibição Detalhada do Anúncio
+function carregarDetalhesAnuncio() {
+    // Simulação de carregamento dos dados do anúncio
+    const anuncioDetalhes = {
+        marca: "Toyota",
+        modelo: "Corolla",
+        ano: "2018",
+        cor: "Preto",
+        quilometragem: "50,000 km",
+        estado: "MG",
+        cidade: "Belo Horizonte",
+        descricao: "Carro em excelente estado, revisões em dia, muito bem conservado.",
+        valor: "50,000"
+    };
 
+    document.getElementById('detalhesMarca').innerText = anuncioDetalhes.marca;
+    document.getElementById('detalhesModelo').innerText = anuncioDetalhes.modelo;
+    document.getElementById('detalhesAno').innerText = anuncioDetalhes.ano;
+    document.getElementById('detalhesCor').innerText = anuncioDetalhes.cor;
+    document.getElementById('detalhesQuilometragem').innerText = anuncioDetalhes.quilometragem;
+    document.getElementById('detalhesEstado').innerText = anuncioDetalhes.estado;
+    document.getElementById('detalhesCidade').innerText = anuncioDetalhes.cidade;
+    document.getElementById('detalhesDescricao').innerText = anuncioDetalhes.descricao;
+    document.getElementById('detalhesValor').innerText = `R$ ${anuncioDetalhes.valor}`;
+}
+
+// 2.9 - Listagem de Interesses
+function carregarInteresses() {
+    // Simulação de carregamento das mensagens de interesse
+    const interesses = [
+        { nome: "João", telefone: "(34) 99999-9999", mensagem: "Gostei do veículo, quero negociar." },
+        { nome: "Maria", telefone: "(31) 88888-8888", mensagem: "Estou interessada, posso pagar à vista." }
+    ];
+
+    const interessesContainer = document.getElementById('interessesContainer');
+    interesses.forEach(interesse => {
+        const interesseItem = document.createElement('div');
+        interesseItem.classList.add('interesse-item');
+        interesseItem.innerHTML = `
+            <p><strong>Nome:</strong> ${interesse.nome}</p>
+            <p><strong>Telefone:</strong> ${interesse.telefone}</p>
+            <p><strong>Mensagem:</strong> ${interesse.mensagem}</p>
+        `;
+        interessesContainer.appendChild(interesseItem);
+    });
+}

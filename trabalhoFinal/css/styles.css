@@ -285,19 +285,19 @@ button:hover {
 
 /* Criar Anuncio */
 
-#formAnuncio {
+#form-anuncio {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-#formAnuncio label {
+#form-anuncio label {
     font-size: 1rem;
     font-weight: 500;
     color: #555;
 }
 
-#formAnuncio  input, #formAnuncio  select, #formAnuncio  textarea {
+#form-anuncio  input, #form-anuncio  select, #form-anuncio  textarea {
     padding: 12px;
     font-size: 1rem;
     border: 1px solid #ddd;
@@ -307,12 +307,12 @@ button:hover {
     width: 100%;
 }
 
-#formAnuncio  input:focus, #formAnuncio  select:focus, #formAnuncio  textarea:focus {
+#form-anuncio  input:focus, #form-anuncio  select:focus, #form-anuncio  textarea:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
 }
 
-#formAnuncio  textarea {
+#form-anuncio  textarea {
     resize: vertical;
     height: 100px;
 }
@@ -422,6 +422,67 @@ button:hover {
 .btn:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* Estilo para as informações detalhadas */
+.detalhes-anuncio {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+/* Para ajustar a galeria de imagens e a descrição */
+.detalhes-anuncio .anuncio-imagens, 
+.detalhes-anuncio .anuncio-detalhes {
+    flex-basis: 48%;
+}
+
+/* Estilo das imagens */
+.anuncio-imagens img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.anuncio-imagens img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo dos detalhes do anúncio */
+
+.anuncio-detalhes {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.anuncio-detalhes h3 {
+    color: #1E90FF;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #1E90FF;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.anuncio-detalhes p {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.anuncio-detalhes p strong {
+    font-weight: bold;
+    color: #333;
+}
+
 
 
 
