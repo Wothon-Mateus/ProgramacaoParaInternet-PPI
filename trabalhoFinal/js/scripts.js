@@ -54,7 +54,6 @@ function verificarLogin() {
     }
 }
 
-// @@@@@@@@@@@@@@@@@@@@@@@@@
 
 // 2.4 - Registro de Interesse
 document.getElementById('formInteresse')?.addEventListener('submit', function(event) {
@@ -113,7 +112,7 @@ document.getElementById('form-anuncio')?.addEventListener('submit', function(eve
     }
 });
 
-// 2.7 - Listagem de Anúncios
+// - Listagem de Anúncios
 function carregarAnuncios() {
     const anuncios = JSON.parse(localStorage.getItem('anuncios')) || [];
     const container = document.querySelector('.anuncios-listagem');
@@ -136,7 +135,7 @@ function carregarAnuncios() {
                 </div>
             </div>
         `;
-        container.innerHTML += card;
+        container.innerHTML = card;
     });
 }
 
@@ -212,23 +211,3 @@ function carregarDetalhesAnuncio() {
     document.getElementById('detalhesValor').innerText = `R$ ${anuncioDetalhes.valor}`;
 }
 
-// 2.9 - Listagem de Interesses
-function carregarInteresses() {
-    // Simulação de carregamento das mensagens de interesse
-    const interesses = [
-        { nome: "João", telefone: "(34) 99999-9999", mensagem: "Gostei do veículo, quero negociar." },
-        { nome: "Maria", telefone: "(31) 88888-8888", mensagem: "Estou interessada, posso pagar à vista." }
-    ];
-
-    const interessesContainer = document.getElementById('interessesContainer');
-    interesses.forEach(interesse => {
-        const interesseItem = document.createElement('div');
-        interesseItem.classList.add('interesse-item');
-        interesseItem.innerHTML = `
-            <p><strong>Nome:</strong> ${interesse.nome}</p>
-            <p><strong>Telefone:</strong> ${interesse.telefone}</p>
-            <p><strong>Mensagem:</strong> ${interesse.mensagem}</p>
-        `;
-        interessesContainer.appendChild(interesseItem);
-    });
-}
