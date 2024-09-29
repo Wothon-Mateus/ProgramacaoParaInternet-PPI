@@ -24,6 +24,14 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.logo-img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    border-radius: 8px; 
+}
+
+
 header h1 {
     font-size: 3rem;
     font-weight: 700;

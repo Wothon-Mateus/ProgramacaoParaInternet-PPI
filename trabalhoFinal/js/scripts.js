@@ -7,6 +7,8 @@ document.querySelectorAll('nav ul li a').forEach(link => {
     });
 });
 
+// O logout. html não consequi fazer apenas usado js, css e html 
+
 // Função de logout simulada
 function logoff() {
     if (confirm("Tem certeza que deseja sair?")) {
@@ -176,6 +178,8 @@ document.querySelectorAll('.btn-interesses')?.forEach(button => {
     });
 });
 
+// Esse função ainda não funciona 
+
 document.querySelectorAll('.btn-excluir')?.forEach(button => {
     button.addEventListener('click', function() {
         if (confirm("Tem certeza que deseja excluir este anúncio?")) {
@@ -211,3 +215,23 @@ function carregarDetalhesAnuncio() {
     document.getElementById('detalhesValor').innerText = `R$ ${anuncioDetalhes.valor}`;
 }
 
+// 2.9 - Listagem de Interesses
+function carregarInteresses() {
+    // Simulação de carregamento das mensagens de interesse
+    const interesses = [
+        { nome: "João", telefone: "(34) 99999-9999", mensagem: "Gostei do veículo, quero negociar." },
+        { nome: "Maria", telefone: "(31) 88888-8888", mensagem: "Estou interessada, posso pagar à vista." }
+    ];
+
+    const interessesContainer = document.getElementById('interessesContainer');
+    interesses.forEach(interesse => {
+        const interesseItem = document.createElement('div');
+        interesseItem.classList.add('interesse-item');
+        interesseItem.innerHTML = `
+            <p><strong>Nome:</strong> ${interesse.nome}</p>
+            <p><strong>Telefone:</strong> ${interesse.telefone}</p>
+            <p><strong>Mensagem:</strong> ${interesse.mensagem}</p>
+        `;
+        interessesContainer.appendChild(interesseItem);
+    });
+}
