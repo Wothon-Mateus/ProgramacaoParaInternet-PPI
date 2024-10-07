@@ -1,109 +1,95 @@
+/* Estilo personalizado */
 body {
-    background-color: #a8a3a3;
+    background-color: #f3f4f6;
+    color: #333;
+    font-family: 'Helvetica', sans-serif;
 }
-
-
-main {
-    width: 70%;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-
-}
-
 
 header {
-    text-align:center;
-    /* position: sticky;
-    top: 0; */
-    margin-top: 5px;
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    color: #5a5757;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
 }
 
-
-nav li{
-    display: inline-block;
-    padding: 10px;
+.navbar-nav .nav-link {
+    color: #f8f9fa;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
-header nav {
-    position: sticky;
-    top: 0;
-
-}
-nav {
-    background-color: #5a5757;
-    margin: 10px;
-
+.navbar-nav .nav-link:hover {
+    color: #adb5bd;
 }
 
-main h2, h3 {
-    color: #5a5757;
+main {
+    padding: 40px 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    color: #007bff;
 }
 
 footer {
+    background-color: #343a40;
+    color: white;
     text-align: center;
+    padding: 15px 0;
 }
 
-
-/* Galeria */
-
-div h1 {
-    color: white;
-}
-
-header div {
-    border-radius: 10px;
-    width: 70%;
-    margin: 0 auto;
-    background-color: #5a5757;;
-    padding: 2px;
-}
-
-#const{
-    width: 70%;
-    margin: 0 auto;
-    border-radius: 10px;
-    color: white;
-
-}
-
-
-#main_img {
-    width: 67%;
-    border-radius: 10px;
-}
-
-#footer_ga {
-
-    width: 70%;
-    background-color: #5a5757;
-    padding: 1px;
-    margin: 0 auto;
-    border-radius: 10px;
-    color: white;
+footer p {
+    margin: 0;
 }
 
 #main_img {
+    padding: 40px 20px;
+}
+
+#h2 {
     text-align: center;
+    font-size: 2.2rem;
+    color: #007bff;
+    margin-bottom: 30px;
 }
 
-img {
-    width: 220px;
-    height: 220px;
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.item img {
+    width: 100%;
+    height: auto;
     border-radius: 10px;
-    margin: 7px;
-    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-#h2{
-    text-align: left;
+.item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-
-/* Cadastrado form */
 
 #main_form{
     max-width: 300px;
@@ -159,34 +145,8 @@ button:hover {
     background-color: #d4d4d4; 
 }
 
-/* Resposividade */
-
-@media (max-width: 600px) {
-
-    main {
-        width: 95%;
-    }
-
-    nav {
-        width: 100%;
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 20px;
     }
 }
-
-.container {
-   
-    width:  95%;
-    display: flex;
-    padding: 1rem;
-    flex-wrap: wrap;
-}
-
-.item {
-    justify-content: space-evenly;
-    flex-basis: 0;
-    flex-grow: 1;
-   
-}
-
-
-
-
