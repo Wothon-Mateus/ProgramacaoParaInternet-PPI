@@ -1,0 +1,192 @@
+body {
+    background-color: #a8a3a3;
+}
+
+
+main {
+    width: 70%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+
+}
+
+
+header {
+    text-align:center;
+    /* position: sticky;
+    top: 0; */
+    margin-top: 5px;
+}
+
+header h1 {
+    color: #5a5757;
+}
+
+
+nav li{
+    display: inline-block;
+    padding: 10px;
+}
+
+header nav {
+    position: sticky;
+    top: 0;
+
+}
+nav {
+    background-color: #5a5757;
+    margin: 10px;
+
+}
+
+main h2, h3 {
+    color: #5a5757;
+}
+
+footer {
+    text-align: center;
+}
+
+
+/* Galeria */
+
+div h1 {
+    color: white;
+}
+
+header div {
+    border-radius: 10px;
+    width: 70%;
+    margin: 0 auto;
+    background-color: #5a5757;;
+    padding: 2px;
+}
+
+#const{
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 10px;
+    color: white;
+
+}
+
+
+#main_img {
+    width: 67%;
+    border-radius: 10px;
+}
+
+#footer_ga {
+
+    width: 70%;
+    background-color: #5a5757;
+    padding: 1px;
+    margin: 0 auto;
+    border-radius: 10px;
+    color: white;
+}
+
+#main_img {
+    text-align: center;
+}
+
+img {
+    width: 220px;
+    height: 220px;
+    border-radius: 10px;
+    margin: 7px;
+    
+}
+
+#h2{
+    text-align: left;
+}
+
+/* Cadastrado form */
+
+#main_form{
+    max-width: 300px;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    box-sizing: border-box;
+    transition: box-shadow 0.3s;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Sombreamento ao focar no campo */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #e6e6e6; 
+    border-radius: 4px; 
+    cursor: pointer;
+}
+
+
+
+.material-symbols-outlined{
+    vertical-align: middle;
+}
+
+button:hover {
+    background-color: #d4d4d4; 
+}
+
+/* Resposividade */
+
+@media (max-width: 600px) {
+
+    main {
+        width: 95%;
+    }
+
+    nav {
+        width: 100%;
+    }
+}
+
+.container {
+   
+    width:  95%;
+    display: flex;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.item {
+    justify-content: space-evenly;
+    flex-basis: 0;
+    flex-grow: 1;
+   
+}
+
+
+
+
