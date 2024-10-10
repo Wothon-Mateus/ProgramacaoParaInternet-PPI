@@ -29,3 +29,25 @@ CREATE TABLE enderecoCliente
 
 INSERT INTO aluno VALUES ("Fulano", "123");
 INSERT INTO aluno VALUES ("Ciclano", "456");
+
+CREATE TABLE Pessoa (
+  Id INT AUTO_INCREMENT PRIMARY KEY,
+  Nome VARCHAR(100) NOT NULL,
+  Sexo CHAR(1) NOT NULL,
+  Email VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Paciente (
+  Peso DECIMAL(5,2) NOT NULL,
+  Altura DECIMAL(3,2) NOT NULL,
+  TipoSanguineo VARCHAR(3) NOT NULL,
+  IdPessoa INT PRIMARY KEY,
+  FOREIGN KEY (IdPessoa) REFERENCES Pessoa(Id)
+);
+
+CREATE TABLE produto (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  marca VARCHAR(50),
+  descricao TEXT
+);

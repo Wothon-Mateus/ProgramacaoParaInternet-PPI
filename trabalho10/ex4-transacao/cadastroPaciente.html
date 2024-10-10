@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro de Paciente</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <style>
+    body {
+      padding: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <main>
+      <form action="controlador.php?acao=adicionarPaciente" method="POST">
+        <fieldset>
+          <legend>Dados do Paciente</legend>
+
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" name="nome" class="form-control" id="nome" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="sexo" class="form-label">Sexo</label>
+            <select name="sexo" class="form-select" id="sexo" required>
+              <option value="M">Masculino</option>
+              <option value="F">Feminino</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="email" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="peso" class="form-label">Peso (kg)</label>
+            <input type="number" name="peso" step="0.1" class="form-control" id="peso" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="altura" class="form-label">Altura (m)</label>
+            <input type="number" name="altura" step="0.01" class="form-control" id="altura" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="tipoSanguineo" class="form-label">Tipo Sanguíneo</label>
+            <input type="text" name="tipoSanguineo" class="form-control" id="tipoSanguineo" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Cadastrar Paciente</button>
+        </fieldset>
+      </form>
+    </main>
+    <p><a href="../index.html">Menu de opções</a></p>
+  </div>
+
+</body>
+
+</html>
