@@ -10,10 +10,14 @@ try {
   SQL;
 
   $stmt = $pdo->query($sql);
-} 
-catch (Exception $e) {
+} catch (Exception $e) {
   exit('Ocorreu uma falha: ' . $e->getMessage());
 }
+
+// O código utiliza um bloco try-catch para tratar erros na execução da consulta SQL.
+//A consulta é definida para selecionar as colunas nome e telefone da tabela aluno.
+//O método query() é utilizado para executar a consulta SQL, e o resultado é armazenado em $stmt. Se ocorrer algum erro durante a execução da consulta, ele será capturado pelo bloco catch, e uma mensagem de erro será exibida.
+
 
 ?>
 <!doctype html>
@@ -38,8 +42,7 @@ catch (Exception $e) {
         <th>Telefone</th>
       </tr>
       <?php
-      while ($row = $stmt->fetch()) 
-      {
+      while ($row = $stmt->fetch()) {
         $nome = htmlspecialchars($row['nome']);
         $telefone = htmlspecialchars($row['telefone']);
 
