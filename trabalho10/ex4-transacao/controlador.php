@@ -33,11 +33,22 @@ switch ($acao) {
 
     try {
       // Insere os dados nas tabelas correlacionadas, cliente e enderecoCliente, utilizando transação
-      Cliente::Create($pdo, $nome, $cpf, $email, $senhaHash, $dataNascimento, $estadoCivil, $altura, 
-        $cep, $logradouro, $bairro, $cidade);
+      Cliente::Create(
+        $pdo,
+        $nome,
+        $cpf,
+        $email,
+        $senhaHash,
+        $dataNascimento,
+        $estadoCivil,
+        $altura,
+        $cep,
+        $logradouro,
+        $bairro,
+        $cidade
+      );
       header("location: clientes.html");
-    } 
-    catch (Exception $e) {
+    } catch (Exception $e) {
       throw new Exception($e->getMessage());
     }
     break;
@@ -48,11 +59,21 @@ switch ($acao) {
       $arrayClientes = Cliente::GetFirst30($pdo);
       header('Content-Type: application/json; charset=utf-8');
       echo json_encode($arrayClientes);
-    } 
-    catch (Exception $e) {
+    } catch (Exception $e) {
       throw new Exception($e->getMessage());
     }
     break;
+    
+  case "listarPacientes":
+    try {
+      $arrayPacientes = Paciente::GetFirst30($pdo);
+      header('Content-Type: application/json; charset=utf-8');
+      echo json_encode($arrayPacientes);
+    } catch (Exception $e) {
+      throw new Exception($e->getMessage());
+    }
+    break;
+
 
   case "adicionarPaciente":
     //--------------------------------------------------------------------------------------
@@ -67,8 +88,7 @@ switch ($acao) {
       // Insere os dados nas tabelas Pessoa e Paciente, utilizando transação
       Paciente::Create($pdo, $nome, $sexo, $email, $peso, $altura, $tipoSanguineo);
       header("location: cadastroPaciente.html");
-    } 
-    catch (Exception $e) {
+    } catch (Exception $e) {
       throw new Exception($e->getMessage());
     }
     break;
@@ -76,4 +96,3 @@ switch ($acao) {
   default:
     exit("Ação não disponível");
 }
-?>

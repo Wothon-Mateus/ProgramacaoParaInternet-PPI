@@ -24,6 +24,8 @@ function checkLogin($pdo, $email, $senha)
   }
 }
 
+// lua@gmail.com
+
 require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 

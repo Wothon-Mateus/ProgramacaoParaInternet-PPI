@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pacientes cadastrados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h3>Pacientes Cadastrados</h3>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Sexo</th>
+            <th>Email</th>
+            <th>Peso</th>
+            <th>Altura</th>
+            <th>Tipo Sanguíneo</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <p><a href="../index.html">Menu de opções</a></p>
+</div>
+
+<script>
+    async function getJSON(url) {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(response.statusText);
+            var dataText = await response.text();
+            const data = JSON.parse(dataText);
+            return data;
+        } catch (e) {
+            console.log(e);
+            console.log(dataText ?? '');
+            return null;
+        }
+    }
+
+    async function carregaPacientes() {
+        const pacientes = await getJSON("controlador.php?acao=listarPacientes");
+        if (pacientes == null) return;
+
+        const tbody = document.querySelector("table > tbody");
+        for (let paciente of pacientes) {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${paciente.Nome}</td>
+                <td>${paciente.Sexo}</td>
+                <td>${paciente.Email}</td>
+                <td>${paciente.Peso}</td>
+                <td>${paciente.Altura}</td>
+                <td>${paciente.TipoSanguineo}</td>
+            `;
+            tbody.appendChild(tr);
+        }
+    }
+
+    carregaPacientes();
+</script>
+
+</body>
+
+</html>
