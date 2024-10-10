@@ -1,61 +1,46 @@
 <?php
 
 require "../conexaoMysql.php";
-require "cliente.php";
+require "produto.php";
 
-// resgata a ação a ser executada
 $acao = $_GET['acao'];
-
-// conecta ao servidor do MySQL
 $pdo = mysqlConnect();
 
 switch ($acao) {
-    
-  case "adicionarCliente":
-    //--------------------------------------------------------------------------------------    
+  case "adicionarProduto":
     $nome = $_POST["nome"] ?? "";
-    $cpf = $_POST["cpf"] ?? "";
-    $email = $_POST["email"] ?? "";
-    $senha = $_POST["senha"] ?? "";
-    $dataNascimento = $_POST["dataNascimento"] ?? "";
-    $estadoCivil = $_POST["estadoCivil"] ?? "";
-    $altura = $_POST["altura"] ?? "";
-
-    // gera o hash da senha
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+    $marca = $_POST["marca"] ?? "";
+    $descricao = $_POST["descricao"] ?? "";
 
     try {
-      Cliente::Create($pdo, $nome, $cpf, $email, $senhaHash, $dataNascimento, $estadoCivil, $altura);
-      header("location: clientes.html");
+      Produto::Create($pdo, $nome, $marca, $descricao);
+      header("location: produtos.html");
     } catch (Exception $e) {
       throw new Exception($e->getMessage());
     }
     break;
 
-    
-  case "excluirCliente":
-    //--------------------------------------------------------------------------------------
-    $idCliente = $_GET["idCliente"] ?? "";
+  case "excluirProduto":
+    $idProduto = $_GET["idProduto"] ?? "";
     try {
-      Cliente::Remove($pdo, $idCliente);
-      header("location: clientes.html");
+      Produto::Remove($pdo, $idProduto);
+      header("location: produtos.html");
     } catch (Exception $e) {
       throw new Exception($e->getMessage());
     }
     break;
 
-  case "listarClientes":
-    //--------------------------------------------------------------------------------------
+  case "listarProdutos":
     try {
-      $arrayClientes = Cliente::GetFirst30($pdo);
+      $arrayProdutos = Produto::GetFirst30($pdo);
       header('Content-Type: application/json; charset=utf-8');
-      echo json_encode($arrayClientes);
+      echo json_encode($arrayProdutos);
     } catch (Exception $e) {
       throw new Exception($e->getMessage());
     }
     break;
 
-    //-----------------------------------------------------------------
   default:
     exit("Ação não disponível");
 }
+?>
