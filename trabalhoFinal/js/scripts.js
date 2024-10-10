@@ -108,7 +108,7 @@ document.getElementById('form-anuncio')?.addEventListener('submit', function(eve
         localStorage.setItem('anuncios', JSON.stringify(anuncios));
 
         alert("Anúncio criado com sucesso!");
-        window.location.href = "meus-anuncios.html"; // Redireciona para a listagem de anúncios
+        window.location.href = "meus-anuncios.html"; // Redireciona para a listagem de anúncio
     } else {
         alert("Preencha todos os campos e envie pelo menos 3 fotos.");
     }
