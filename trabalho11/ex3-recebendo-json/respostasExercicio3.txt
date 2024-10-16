@@ -1,0 +1,21 @@
+1) Qual foi o código de status retornado? 
+
+200 OK
+
+2) Qual o valor do cabeçalho Content-Type da resposta HTTP? Por quê?
+
+application/json. O uso de application/json no cabeçalho da resposta HTTP indica que o conteúdo retornado pelo servidor está no formato JSON (JavaScript Object Notation). 
+
+3) Qual o valor recebido no corpo da resposta HTTP (aba Response)?
+
+rua	"Av Floriano"
+bairro	"Centro"
+cidade	"Uberlândia"
+
+4) Qual o valor do cabeçalho Server da resposta HTTP?
+
+Server nginx
+
+5) A requisição HTTP possui o cabeçalho Content-Type? Por quê?
+
+A requisição HTTP não possui o cabeçalho Content-Type. Esse cabeçalho é geralmente incluído na resposta do servidor para indicar o tipo de conteúdo retornado (como HTML, JSON, etc.). Em uma requisição, o cliente não precisa especificar um Content-Type a menos que esteja enviando dados (como em uma requisição POST), onde precisaria informar ao servidor o formato desses dados.

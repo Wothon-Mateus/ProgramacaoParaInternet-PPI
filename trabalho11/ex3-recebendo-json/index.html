@@ -76,6 +76,9 @@
     inputCep.onkeyup = () => buscaEndereco(inputCep.value);
   </script>
 
+  <!-- buscaEndereco(cep): Verifica se o CEP tem exatamente 9 caracteres. Se a condição for satisfeita, envia uma requisição HTTP para o script busca-endereco.php, passando o CEP como parâmetro e esperando uma resposta no formato JSON.
+    Quando a resposta é recebida: Se o status da resposta não for 200 ou se a resposta estiver vazia, exibe uma mensagem de erro no console. Se a resposta for válida, preenche automaticamente os campos rua, bairro e cidade do formulário com os dados retornados. -->
+
 </body>
 
 </html>

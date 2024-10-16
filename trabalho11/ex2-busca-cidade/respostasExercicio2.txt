@@ -60,3 +60,11 @@ Date: Wed, 16 Oct 2024 17:28:45 GMT
 Content-Type: text/html; charset=UTF-8
 Content-Length: 0
 Connection: keep-alive
+
+
+**************Respostas do intem F***********
+
+
+
+Durante o desenvolvimento e testes: Ativar a exibição de erros é extremamente útil enquanto você está desenvolvendo e depurando seu código. Isso ajuda a identificar rapidamente os problemas e corrigi-los com base nas mensagens de erro detalhadas.
+Em ambientes de produção: Display Errors nunca deve ser ativado em um ambiente de produção, pois exibir mensagens de erro pode revelar detalhes sensíveis sobre o servidor ou o código, como estruturas de banco de dados, caminhos de arquivos e outras informações que poderiam ser usadas para explorar vulnerabilidades. 
