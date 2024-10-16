@@ -1,0 +1,62 @@
+**************Respostas do intem C***********
+
+
+1) Qual foi o código de status retornado? 
+
+200 OK
+
+2) Qual o valor do cabeçalho Content-Type da resposta HTTP? Por quê?
+
+Content-Type: text/html; charset=UTF-8. Por que: text/html: Indica que o conteúdo da resposta é um documento HTML. Isso informa ao navegador que ele deve processar e renderizar o conteúdo como uma página da web.
+charset=UTF-8: Especifica que a codificação de caracteres usada no documento é UTF-8, uma codificação amplamente usada que suporta uma grande variedade de caracteres, incluindo letras acentuadas e caracteres de diferentes idiomas.
+
+3) Qual o valor recebido no corpo da resposta HTTP (aba Response)?
+
+Uberlândia
+
+4) Qual o valor do cabeçalho Server da resposta HTTP?
+
+O valor do cabeçalho Server da resposta HTTP é nginx.
+
+5) A requisição HTTP possui o cabeçalho Content-Type? Por quê?
+
+A requisição HTTP não possui o cabeçalho Content-Type. Esse cabeçalho é geralmente incluído na resposta do servidor para indicar o tipo de conteúdo retornado (como HTML, JSON, etc.). Em uma requisição, o cliente não precisa especificar um Content-Type a menos que esteja enviando dados (como em uma requisição POST), onde precisaria informar ao servidor o formato desses dados.
+
+**************Respostas do intem D***********
+
+1) Qual foi o código de status retornado? 
+
+404 Not Found
+
+
+2) Qual o valor do cabeçalho Content-Type da resposta HTTP? Por quê?
+
+Content-Type: text/html; charset=UTF-8. Por que: text/html: Indica que o conteúdo da resposta é um documento HTML. Isso informa ao navegador que ele deve processar e renderizar o conteúdo como uma página da web.
+charset=UTF-8: Especifica que a codificação de caracteres usada no documento é UTF-8, uma codificação amplamente usada que suporta uma grande variedade de caracteres, incluindo letras acentuadas e caracteres de diferentes idiomas.
+
+3) Qual o valor recebido no corpo da resposta HTTP (aba Response)?
+
+38400-500 is not available
+
+4) Qual o valor do cabeçalho Server da resposta HTTP?
+
+O valor do cabeçalho Server da resposta HTTP é nginx.
+
+5) A requisição HTTP possui o cabeçalho Content-Type? Por quê?
+
+A requisição HTTP não possui o cabeçalho Content-Type. Esse cabeçalho é geralmente incluído na resposta do servidor para indicar o tipo de conteúdo retornado (como HTML, JSON, etc.). Em uma requisição, o cliente não precisa especificar um Content-Type a menos que esteja enviando dados (como em uma requisição POST), onde precisaria informar ao servidor o formato desses dados.
+
+**************Respostas do intem E***********
+
+1) Qual foi o código de status retornado?
+
+500 Internal Server Error
+
+2) E o conteúdo do corpo da resposta HTTP
+
+HTTP/1.1 500 Internal Server Error
+Server: nginx
+Date: Wed, 16 Oct 2024 17:28:45 GMT
+Content-Type: text/html; charset=UTF-8
+Content-Length: 0
+Connection: keep-alive
