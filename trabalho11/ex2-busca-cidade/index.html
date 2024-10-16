@@ -36,9 +36,16 @@
     <span id="cidade"><span>
   </main>
 
+  <!-- buscaCidade(cep): Verifica se o CEP tem exatamente 9 caracteres (formato típico de CEP com hífen).
+    Se sim, envia uma requisição HTTP para um script PHP (busca-cidade.php) passando o CEP como parâmetro.
+    Se a requisição for bem-sucedida, exibe o nome da cidade no elemento com o ID cidade.
+    Se a requisição falhar, limpa o campo da cidade e exibe um erro no console. 
+    onkeyup: Detecta quando o usuário digita no campo de CEP.
+    Chama a função buscaCidade() sempre que o valor do campo é atualizado.-->
+
   <script>
     function buscaCidade(cep) {
-      if (cep.length != 9) 
+      if (cep.length != 9)
         return;
 
       let xhr = new XMLHttpRequest();

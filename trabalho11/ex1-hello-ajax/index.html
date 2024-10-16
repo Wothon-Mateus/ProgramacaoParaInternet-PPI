@@ -38,6 +38,12 @@
     <button>Carregar mais conteúdo com Ajax</button>
   </main>
 
+  <!-- Em resumo, o código adiciona conteúdo de um arquivo externo ao final de uma seção <main> ao clicar em um botão. 
+    Função loadExtraContent(): Cria uma nova solicitação HTTP usando XMLHttpRequest.
+    Envia uma requisição para obter o conteúdo do arquivo conteudoAdicional.html.
+    Quando o conteúdo é carregado com sucesso, insere esse conteúdo no final do elemento <main> da página atual. -->
+  
+
   <script>
     function loadExtraContent() {
       let xhr = new XMLHttpRequest();
@@ -50,6 +56,9 @@
     }
     const button = document.querySelector("button");
     button.addEventListener("click", loadExtraContent);
+
+
+  
   </script>
   
 </body>
