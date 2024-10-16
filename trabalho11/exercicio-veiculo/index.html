@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Desenvolvimento Web com Ajax</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    body {
+      padding-top: 1rem;
+    }
+
+    h3 {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <form name="buscaVeiculo" class="row g-3">
+      <div>
+        <label for="marca" class="form-label">Informe a marca do veículo</label>
+        <select id="marca" name="marca" class="form-select">
+        </select>
+      </div>
+      <div>
+        <label for="modelo" class="form-label">Informe o modelo do veículo</label>
+        <select id="modelo" name="modelo" class="form-select">
+        </select>
+      </div>
+    </form>
+    <hr>
+    <h3>Veículos localizados</h3>
+    <table class="table table-striped" id="tabelaVeiculos">
+      <!--tabela HTML para apresentação dinâmica dos dados dos veículos -->
+    </table>
+  </div>
+
+  <script>
+
+    function carregaMarcasDistintas() {
+      // complete o código para permitir que o primeiro <select> 
+      // seja carregado assim que a página for apresentada ao usuário. 
+      // O código JavaScript deve fazer uma requisição Ajax ao script get-marcas-php.      
+    }
+
+    function carregaModelosDaMarca() {
+      // complete o código para que o segundo <select> seja carregado com base 
+      // na marca escolhida no primeiro <select>. A função deve fazer uma requisição Ajax
+      // ao script get-modelos.php. Adicione o código JavaScript para que a função seja 
+      // chamada na ocorrência do evento apropriado.
+    }
+
+    function carregaVeiculosDoModelo() {
+      // complete o código para permitir que os dados de todos os veículos 
+      // do modelo escolhido sejam listados em uma tabela HTML, conforme figura apresentada
+      // no roteiro do exercício. A função deve fazer uma requisição Ajax ao script 
+      // get-veiculos.php. Ao receber os dados do servidor, esta função deve repassá-los 
+      // à função exibeVeiculos para exibição adequada.
+    }
+
+    function exibeVeiculos(veiculos) {
+      // completo o código para que os dados dos veículos sejam apresentados dinamicamente
+      // na tabela HTML. Deve-se manipular a árvore DOM manipulando a árvore DOM e utilizar
+      // métodos como document.createElement.
+    }
+
+    //---------------------------------------------------------------------------------------
+    // coloque aqui o código JavaScript "principal" a ser executado na ocorrência dos eventos
+
+
+  </script>
+
+</body>
+
+</html>

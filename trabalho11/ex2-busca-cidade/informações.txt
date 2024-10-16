@@ -1,0 +1,2 @@
+Exemplo simples para buscar no servidor o nome da cidade, de forma textual, a partir do CEP. 
+Experimente utilizar os CEPs: 38400-100, 38700-000 e 38400-200 (indisponível no servidor)
