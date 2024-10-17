@@ -36,43 +36,88 @@
     <hr>
     <h3>Veículos localizados</h3>
     <table class="table table-striped" id="tabelaVeiculos">
-      <!--tabela HTML para apresentação dinâmica dos dados dos veículos -->
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>Ano</th>
+          <th>Cor</th>
+          <th>Quilometragem</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- O conteúdo da tabela será atualizado dinamicamente pelo JavaScript -->
+      </tbody>
     </table>
   </div>
 
   <script>
-
+    // Função para carregar as marcas distintas ao carregar a página
     function carregaMarcasDistintas() {
-      // complete o código para permitir que o primeiro <select> 
-      // seja carregado assim que a página for apresentada ao usuário. 
-      // O código JavaScript deve fazer uma requisição Ajax ao script get-marcas-php.      
+      fetch('get-marcas.php')
+        .then(response => response.json())
+        .then(data => {
+          const selectMarca = document.getElementById('marca');
+          selectMarca.innerHTML = ''; // Limpa o conteúdo do select
+          data.forEach(marca => {
+            const option = document.createElement('option');
+            option.value = marca;
+            option.textContent = marca;
+            selectMarca.appendChild(option);
+          });
+        })
+        .catch(error => console.error('Erro ao carregar marcas:', error));
     }
 
+    // Função para carregar os modelos de acordo com a marca selecionada
     function carregaModelosDaMarca() {
-      // complete o código para que o segundo <select> seja carregado com base 
-      // na marca escolhida no primeiro <select>. A função deve fazer uma requisição Ajax
-      // ao script get-modelos.php. Adicione o código JavaScript para que a função seja 
-      // chamada na ocorrência do evento apropriado.
+      const marca = document.getElementById('marca').value;
+      fetch(`get-modelos.php?marca=${encodeURIComponent(marca)}`)
+        .then(response => response.json())
+        .then(data => {
+          const selectModelo = document.getElementById('modelo');
+          selectModelo.innerHTML = ''; // Limpa o conteúdo do select
+          data.forEach(modelo => {
+            const option = document.createElement('option');
+            option.value = modelo;
+            option.textContent = modelo;
+            selectModelo.appendChild(option);
+          });
+        })
+        .catch(error => console.error('Erro ao carregar modelos:', error));
     }
 
+    // Função para carregar os veículos do modelo selecionado
     function carregaVeiculosDoModelo() {
-      // complete o código para permitir que os dados de todos os veículos 
-      // do modelo escolhido sejam listados em uma tabela HTML, conforme figura apresentada
-      // no roteiro do exercício. A função deve fazer uma requisição Ajax ao script 
-      // get-veiculos.php. Ao receber os dados do servidor, esta função deve repassá-los 
-      // à função exibeVeiculos para exibição adequada.
+      const modelo = document.getElementById('modelo').value;
+      fetch(`get-veiculos.php?modelo=${encodeURIComponent(modelo)}`)
+        .then(response => response.json())
+        .then(data => {
+          exibeVeiculos(data);
+        })
+        .catch(error => console.error('Erro ao carregar veículos:', error));
     }
 
+    // Função para exibir os veículos na tabela HTML
     function exibeVeiculos(veiculos) {
-      // completo o código para que os dados dos veículos sejam apresentados dinamicamente
-      // na tabela HTML. Deve-se manipular a árvore DOM manipulando a árvore DOM e utilizar
-      // métodos como document.createElement.
+      const tabelaVeiculos = document.getElementById('tabelaVeiculos').getElementsByTagName('tbody')[0];
+      tabelaVeiculos.innerHTML = ''; // Limpa os dados anteriores
+
+      // Preenche a tabela com os dados dos veículos
+      veiculos.forEach(veiculo => {
+        const row = document.createElement('tr');
+        ['modelo', 'ano', 'cor', 'quilometragem'].forEach(key => {
+          const cell = document.createElement('td');
+          cell.textContent = veiculo[key];
+          row.appendChild(cell);
+        });
+        tabelaVeiculos.appendChild(row);
+      });
     }
 
-    //---------------------------------------------------------------------------------------
-    // coloque aqui o código JavaScript "principal" a ser executado na ocorrência dos eventos
-
-
+    // Código principal que configura os eventos e carrega os dados iniciais
+    window.onload = carregaMarcasDistintas; // Carrega as marcas ao iniciar a página
+    document.getElementById('marca').addEventListener('change', carregaModelosDaMarca); // Carrega modelos ao selecionar marca
+    document.getElementById('modelo').addEventListener('change', carregaVeiculosDoModelo); // Carrega veículos ao selecionar modelo
   </script>
 
 </body>
