@@ -31,3 +31,39 @@ INSERT INTO veiculo VALUES (null, "Chevrolet", "Montana", "2018", "Preta", "5200
 
 INSERT INTO veiculo VALUES (null, "Hyundai", "HB20", "2015", "Branco", "122500");
 INSERT INTO veiculo VALUES (null, "Hyundai", "Creta", "2017", "Prata", "78500");
+
+INSERT INTO veiculo VALUES (null, "Toyota", "Corolla", "2018", "Prata", "85000");
+INSERT INTO veiculo VALUES (null, "Toyota", "Corolla", "2020", "Branco", "47000");
+INSERT INTO veiculo VALUES (null, "Toyota", "Hilux", "2019", "Preto", "68000");
+INSERT INTO veiculo VALUES (null, "Toyota", "Hilux", "2021", "Vermelho", "35000");
+
+INSERT INTO veiculo VALUES (null, "Honda", "Civic", "2017", "Cinza", "92000");
+INSERT INTO veiculo VALUES (null, "Honda", "Civic", "2019", "Preto", "63000");
+INSERT INTO veiculo VALUES (null, "Honda", "HR-V", "2020", "Azul", "41000");
+INSERT INTO veiculo VALUES (null, "Honda", "Fit", "2018", "Prata", "78000");
+
+INSERT INTO veiculo VALUES (null, "Ford", "Ka", "2016", "Vermelho", "112000");
+INSERT INTO veiculo VALUES (null, "Ford", "EcoSport", "2018", "Branco", "67000");
+INSERT INTO veiculo VALUES (null, "Ford", "Fiesta", "2017", "Prata", "96000");
+INSERT INTO veiculo VALUES (null, "Ford", "Ranger", "2021", "Preto", "32000");
+
+INSERT INTO veiculo VALUES (null, "Renault", "Duster", "2019", "Cinza", "54000");
+INSERT INTO veiculo VALUES (null, "Renault", "Kwid", "2020", "Laranja", "28000");
+INSERT INTO veiculo VALUES (null, "Renault", "Sandero", "2017", "Azul", "91000");
+INSERT INTO veiculo VALUES (null, "Renault", "Logan", "2018", "Bege", "68000");
+
+INSERT INTO veiculo VALUES (null, "Nissan", "Versa", "2016", "Preto", "105000");
+INSERT INTO veiculo VALUES (null, "Nissan", "Kicks", "2020", "Branco", "47000");
+INSERT INTO veiculo VALUES (null, "Nissan", "Frontier", "2019", "Prata", "73000");
+INSERT INTO veiculo VALUES (null, "Nissan", "March", "2018", "Vermelho", "82000");
+
+INSERT INTO veiculo VALUES (null, "Peugeot", "208", "2017", "Preto", "89000");
+INSERT INTO veiculo VALUES (null, "Peugeot", "3008", "2021", "Branco", "29000");
+INSERT INTO veiculo VALUES (null, "Peugeot", "2008", "2020", "Prata", "52000");
+INSERT INTO veiculo VALUES (null, "Peugeot", "408", "2019", "Cinza", "67000");
+
+INSERT INTO veiculo VALUES (null, "Kia", "Sportage", "2018", "Vermelho", "64000");
+INSERT INTO veiculo VALUES (null, "Kia", "Sorento", "2019", "Preto", "47000");
+INSERT INTO veiculo VALUES (null, "Kia", "Cerato", "2020", "Branco", "38000");
+INSERT INTO veiculo VALUES (null, "Kia", "Picanto", "2017", "Azul", "72000");
+
