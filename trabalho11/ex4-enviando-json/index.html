@@ -64,7 +64,13 @@
 
       let xhr = new XMLHttpRequest();
       xhr.open("POST", "busca-endereco.php");
+      // i. Define o tipo de resposta esperado como JSON.
+      // Isso informa ao XMLHttpRequest que a resposta do servidor deve ser automaticamente convertida para um objeto JavaScript.
+
       xhr.responseType = 'json';
+      // ii. Define o cabeçalho da requisição HTTP como "application/json".
+      // Isso indica que os dados enviados para o servidor estão no formato JSON.
+      // É importante quando estamos enviando dados em JSON, para que o servidor saiba como processá-los.
       xhr.setRequestHeader("Content-Type", "application/json");
 
       xhr.onload = function () {
@@ -78,6 +84,10 @@
       xhr.onerror = function () {
         console.error("Erro de rede - requisição não finalizada");
       };
+
+      // iii. Envia a requisição HTTP com o corpo contendo um objeto JavaScript convertido em uma string JSON.
+      // A função JSON.stringify() transforma o objetoJS em uma string JSON, que é o formato apropriado para envio de dados ao servidor.
+
 
       xhr.send(JSON.stringify(objetoJS));
     }

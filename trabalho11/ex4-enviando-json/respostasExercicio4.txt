@@ -1,0 +1,10 @@
+C) Abra novamente o exemplo no navegador, insira o CEP 38400-100 e monitore a requisição
+Ajax utilizando o ambiente de desenvolvimento. Observe os cabeçalhos da requisição HTTP
+(Request Headers). Qual o valor dos cabeçalhos Content-Type e Content-Length? O que é
+apresentado na aba Payload? O que isso significa? 
+
+Content-Type: application/json
+Content-Length6: 3
+cep":"38400-100","email":"fulano@mail.com","apikey":"123456"  A presença de dados no formato JSON no Payload indica que está enviando uma estrutura organizada de dados, como um objeto JavaScript, para o servidor.
+
+

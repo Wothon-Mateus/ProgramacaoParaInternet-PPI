@@ -90,8 +90,8 @@
   </div>
 
   <script>
-    function sendForm(form) {      
-      let xhr = new XMLHttpRequest();    
+    function sendForm(form) {
+      let xhr = new XMLHttpRequest();
       xhr.open("POST", form.getAttribute("action"));
       xhr.responseType = 'json';
 
@@ -113,7 +113,7 @@
           form.senha.value = "";
           form.senha.focus();
         }
-      }      
+      }
 
       xhr.onerror = function () {
         console.error("Erro de rede - requisição não finalizada");
@@ -128,6 +128,16 @@
       sendForm(form);
     }
   </script>
+
+  <!-- O formulário foi enviado da forma tradicional? Houve redirecionamento ?
+   O formulário não é enviado de forma tradicional. Em vez disso, ele utiliza uma técnica chamada AJAX para enviar os dados ao servidor de forma assíncrona. 
+   O redirecionamento ocorre apenas se as credenciais de login estiverem corretas. 
+  -->
+
+  <!-- Explicação do codigo: Quando o formulário é enviado, a função sendForm é chamada e impede o comportamento padrão do envio (usando e.preventDefault()).
+  A função cria um objeto XMLHttpRequest para enviar a requisição ao servidor usando o método POST.
+  A URL para onde os dados serão enviados é obtida do atributo action do formulário. O tipo de resposta esperado é definido como json, o que significa que o servidor deve retornar uma resposta no formato JSON.  
+  Se o servidor responder que o usuário está autorizado (loginResponse.isAuthorized), o navegador redireciona para uma nova página (loginResponse.newLocation) Formulário são enviados usando o objeto FormData -->
 
 </body>
 
