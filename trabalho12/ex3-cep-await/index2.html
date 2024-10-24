@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar Endereço - ViaCEP</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Buscar Endereço</h1>
+    <form>
+      <div class="form-group">
+        <label for="cep">CEP</label>
+        <input type="text" class="form-control" id="cep" name="cep" placeholder="Digite o CEP">
+      </div>
+      <div class="form-group">
+        <label for="rua">Logradouro</label>
+        <input type="text" class="form-control" id="rua" name="rua" readonly>
+      </div>
+      <div class="form-group">
+        <label for="bairro">Bairro</label>
+        <input type="text" class="form-control" id="bairro" name="bairro" readonly>
+      </div>
+      <div class="form-group">
+        <label for="cidade">Cidade</label>
+        <input type="text" class="form-control" id="cidade" name="cidade" readonly>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    async function buscaEndereco(cep) {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        if (!response.ok) throw new Error("Erro na requisição");
+
+        const data = await response.json();
+        if (data.erro) {
+          alert("CEP não encontrado!");
+          return;
+        }
+
+        document.getElementById('rua').value = data.logradouro;
+        document.getElementById('bairro').value = data.bairro;
+        document.getElementById('cidade').value = data.localidade;
+      } catch (error) {
+        alert("Erro ao buscar endereço: " + error.message);
+      }
+    }
+
+    document.getElementById('cep').addEventListener('blur', () => {
+      const cep = document.getElementById('cep').value;
+      if (cep) buscaEndereco(cep);
+    });
+  </script>
+
+</body>
+</html>

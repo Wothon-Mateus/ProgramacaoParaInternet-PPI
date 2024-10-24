@@ -70,29 +70,40 @@
 
   <script>
 
+    // A função renderProducts recebe um array de novos produtos e os renderiza na página.
     function renderProducts(newProducts) {
+      // Obtém a seção do DOM onde os produtos serão inseridos.
       const prodsSection = document.getElementById("products");
       // veja observações sobre o elemento <template> no código HTML
       const divItemTemplate = document.getElementById("item-template").content.firstElementChild;
+      // Loop através de cada produto fornecido.
       for (let product of newProducts) {
+        // Clona o template para criar uma nova instância do item.
         const newItem = divItemTemplate.cloneNode(true);
+        // Define a imagem do produto usando o caminho da imagem, define o nome e preço 
         newItem.querySelector(".item-image").src = product.imagePath;
         newItem.querySelector(".item-name").textContent = product.name;
         newItem.querySelector(".item-price").textContent = product.price;
+        // Anexa o novo item à seção de produtos no DOM.
         prodsSection.appendChild(newItem);
       };
     }
-
+    // Função assíncrona para carregar produtos do servidor.
     async function loadProducts() {
       try {
+        // Faz uma requisição para o arquivo more-products.php para obter mais produtos.
         let response = await fetch("more-products.php");
+        // Verifica se a resposta não foi bem-sucedida (status HTTP 200-299).
         if (!response.ok) throw new Error(response.statusText);
+        // Converte a resposta para JSON e armazena na variável products.
         var products = await response.json();
       }
       catch (e) {
+        //Tratamento do erro, imprime a mensagem no console e sai da função.
         console.error(e);
         return;
       }
+       // Chama a função renderProducts para renderizar os produtos carregados.
       renderProducts(products);
     }
 

@@ -1,0 +1,15 @@
+latitude: -19.0243
+longitude: -48.3428
+
+​Valor da resposta2: (
+
+body: ReadableStream
+bodyUsed: false
+headers: Headers(1)
+ok: true
+redirected: false
+status: 200
+statusText: ""
+type: "cors" )
+
+aba Response: {"latitude":-19.0,"longitude":-48.375,"generationtime_ms":0.03707408905029297,"utc_offset_seconds":0,"timezone":"GMT","timezone_abbreviation":"GMT","elevation":803.0,"current_weather_units":{"time":"iso8601","interval":"seconds","temperature":"°C","windspeed":"km/h","winddirection":"°","is_day":"","weathercode":"wmo code"},"current_weather":{"time":"2024-10-24T15:00","interval":900,"temperature":29.4,"windspeed":14.0,"winddirection":334,"is_day":1,"weathercode":3}}
