@@ -38,6 +38,7 @@
     <h2>Temperatura Local: <span id="temp">...</span></h2>
     <h2>Velocidade do Vento: <span id="wind">...</span></h2>
   </main>
+
   <script>
 
     // OBS: A função não trata todos os erros
@@ -52,6 +53,10 @@
         })
         .catch(error => console.log(error));
     }
+
+    //A função primeiro usa a API ipapi.co para obter a localização do usuário com base no seu IP.
+    //Depois, faz uma segunda requisição à API open - meteo.com para buscar informações sobre o clima atual com base nas coordenadas da localização.
+    //Por fim, exibe a temperatura e a velocidade do vento no HTML, atualizando os elementos correspondentes na página.
 
     window.onload = function () {
       buscaClimaLocal();
