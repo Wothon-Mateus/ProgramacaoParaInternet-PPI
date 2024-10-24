@@ -47,15 +47,28 @@
 
   <script>
 
+    //A função buscaEndereco é declarada como assíncrona, permitindo o uso de await dentro dela para lidar com operações assíncronas de forma mais simples, sem precisar de múltiplos .then() e .catch().
+    //A função buscaEndereco faz uma requisição para buscar o endereço com base no CEP digitado.
+    //Se o CEP for válido (9 caracteres), a função faz a requisição ao servidor e preenche os campos do formulário (rua, bairro, cidade) com os dados do endereço retornado.
+    //Caso ocorra um erro na requisição ou na resposta, ele é capturado e exibido no console.
+    //O evento onkeyup detecta quando o usuário digita no campo de CEP e aciona a função buscaEndereco automaticamente.
+
     async function buscaEndereco(cep) {
       if (cep.length != 9) return;
 
       try {
         const response = await fetch("busca-endereco.php?cep=" + cep);
+        // response.status contém o código de status HTTP da resposta.
+        // Possíveis valores comuns:
+        // 200 (OK): a requisição foi bem-sucedida e o servidor retornou os dados corretamente.
+        // 404 (Not Found): o arquivo ou recurso solicitado não foi encontrado.
         if (!response.ok) {
           errorMessage = await response.text();
           throw new Error(response.statusText + errorMessage);
         }
+        // A propriedade response.body contém o corpo da resposta, mas ela não é diretamente acessível.
+        // Para acessar o conteúdo, utilizamos o método response.json(), que lê o corpo e o converte em um objeto JavaScript.
+        // Portanto, response.body NÃO contém os dados do endereço diretamente, precisamos de await response.json() para isso.
         const endereco = await response.json();
         const form = document.querySelector("form");
         form.rua.value = endereco.rua;
