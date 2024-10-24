@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rolagem Infinita</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #dedede;
+      font-family: Helvetica;
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 3rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #888;
+    }
+
+    .item {
+      background-color: white;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .item-image {
+      width: 150px;
+      height: 150px;
+      margin: 0 2rem;
+    }
+
+    .item-name {
+      font: 2em Verdana;
+      color: #888;
+    }
+
+    .item-price {
+      font: 2em Verdana;
+      color: darkgreen;
+      margin-left: 2rem;
+    }
+
+    .item-price::before {
+      content: 'R$ ';
+    }
+  </style>
+</head>
+
+<body>
+
+  <section id="products">
+    <h2>Nossos produtos</h2>
+
+    <!-- O contúdo de um <template> não é renderizado automaticamente na página, e não é visível
+      diretamente por métodos como document.querySelector, pois ele é tratado como um 
+      fragmento de documento (Document Fragment). Entretanto, podemos utilizar
+      a propriedade 'content' para acessar seu conteúdo, cloná-lo com o método cloneNode e 
+      inserí-lo na árvore DOM renderizada com appendChild -->
+    <template id="item-template">
+      <div class="item">
+        <img class="item-image">
+        <span class="item-name"></span>
+        <span class="item-price"></span>
+      </div>
+    </template>
+
+  </section>
+
+  <script>
+
+    function renderProducts(newProducts) {
+      const prodsSection = document.getElementById("products");
+      // veja observações sobre o elemento <template> no código HTML
+      const divItemTemplate = document.getElementById("item-template").content.firstElementChild;
+      for (let product of newProducts) {
+        const newItem = divItemTemplate.cloneNode(true);
+        newItem.querySelector(".item-image").src = product.imagePath;
+        newItem.querySelector(".item-name").textContent = product.name;
+        newItem.querySelector(".item-price").textContent = product.price;
+        prodsSection.appendChild(newItem);
+      };
+    }
+
+    async function loadProducts() {
+      try {
+        let response = await fetch("more-products.php");
+        if (!response.ok) throw new Error(response.statusText);
+        var products = await response.json();
+      }
+      catch (e) {
+        console.error(e);
+        return;
+      }
+      renderProducts(products);
+    }
+
+    window.onload = function () {
+      loadProducts();
+    }
+
+    window.onscroll = function () {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        loadProducts();
+      }
+    };
+
+  </script>
+
+</body>
+
+</html>
