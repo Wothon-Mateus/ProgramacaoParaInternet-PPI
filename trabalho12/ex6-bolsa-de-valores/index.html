@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Ações</title>
+</head>
+<body>
+    <h1>Consultar Cotações de Ações</h1>
+    <form id="form">
+        <label for="codigoAcao1">Código da Ação 1:</label>
+        <input type="text" id="codigoAcao1" name="codigoAcao1"><br>
+        
+        <label for="codigoAcao2">Código da Ação 2:</label>
+        <input type="text" id="codigoAcao2" name="codigoAcao2"><br>
+        
+        <label for="codigoAcao3">Código da Ação 3:</label>
+        <input type="text" id="codigoAcao3" name="codigoAcao3"><br>
+
+        <button type="submit">Consultar</button>
+    </form>
+    <div id="resultado"></div>
+
+    <script>
+        async function getQuote(codigoAcao) {
+            const apiKey = '34Y1TLPHJ38WMXQZ'; 
+            const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${codigoAcao}.SA&apikey=${apiKey}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                return data['Global Quote']['05. price'];
+            } catch (error) {
+                console.error('Erro na consulta da ação:', error);
+                return 'Erro';
+            }
+        }
+
+        async function getPortfolio(codigoAcoes) {
+            try {
+                const cotacoes = await Promise.all(codigoAcoes.map(codigo => getQuote(codigo)));
+                return cotacoes;
+            } catch (error) {
+                console.error('Erro ao buscar o portfólio:', error);
+            }
+        }
+
+        document.getElementById('form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const codigoAcao1 = document.getElementById('codigoAcao1').value;
+            const codigoAcao2 = document.getElementById('codigoAcao2').value;
+            const codigoAcao3 = document.getElementById('codigoAcao3').value;
+
+            const codigos = [codigoAcao1, codigoAcao2, codigoAcao3].filter(codigo => codigo);
+            const resultados = await getPortfolio(codigos);
+            document.getElementById('resultado').innerHTML = `
+                <p>Cotação de ${codigoAcao1}: ${resultados[0]}</p>
+                <p>Cotação de ${codigoAcao2}: ${resultados[1]}</p>
+                <p>Cotação de ${codigoAcao3}: ${resultados[2]}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
