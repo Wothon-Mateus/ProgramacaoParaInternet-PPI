@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca de Sons de Aves - Xeno-canto</title>
+</head>
+
+<body>
+    <h1>Explorador de Sons de Aves - Xeno-canto</h1>
+    <p>Digite o nome de uma espécie de ave para buscar gravações de seu canto.</p>
+
+    <form id="buscaForm">
+        <input type="text" id="nomeAve" placeholder="Nome da Espécie">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById('buscaForm').addEventListener('submit', async function (event) {
+            event.preventDefault();  // Evita o envio do formulário
+
+            const nomeAve = document.getElementById('nomeAve').value;
+            const url = `https://xeno-canto.org/api/2/recordings?query=${nomeAve}`;
+
+            try {
+                const resposta = await fetch(url);
+                const dados = await resposta.json();
+
+                let conteudo = `<h2>Resultados para: ${nomeAve}</h2>`;
+
+                if (dados.recordings.length > 0) {
+                    dados.recordings.forEach(gravacao => {
+                        conteudo += `
+                            <p><strong>Espécie:</strong> ${gravacao.en}</p>
+                            <audio controls>
+                                <source src="${gravacao.file}" type="audio/mpeg">
+                                Seu navegador não suporta o elemento de áudio.
+                            </audio>
+                        `;
+                    });
+                } else {
+                    conteudo += `<p>Nenhuma gravação encontrada.</p>`;
+                }
+
+                document.getElementById('resultado').innerHTML = conteudo;
+            } catch (erro) {
+                document.getElementById('resultado').innerHTML = `<p>Erro ao buscar os dados. Tente novamente.</p>`;
+            }
+        });
+
+    </script>
+</body>
+
+</html>
