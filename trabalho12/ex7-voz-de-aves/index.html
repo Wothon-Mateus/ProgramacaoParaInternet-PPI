@@ -23,6 +23,8 @@
         document.getElementById('buscaForm').addEventListener('submit', async function (event) {
             event.preventDefault();  // Evita o envio do formulário
 
+            //link da API usada https://xeno-canto.org/explore/api
+
             const nomeAve = document.getElementById('nomeAve').value;
             const url = `https://xeno-canto.org/api/2/recordings?query=${nomeAve}`;
 
