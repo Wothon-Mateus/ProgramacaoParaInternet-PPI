@@ -1,36 +1,33 @@
 <?php
+require "conexaoMysql.php"; // Inclua a conexão com o banco de dados
 
-require "conexaoMysql.php";
-require "cliente.php";
-
-// resgata a ação a ser executada
-$acao = $_GET['acao'];
-
-// conecta ao servidor do MySQL
-$pdo = mysqlConnect();
-
-switch ($acao) {
-    
-  case "adicionarCliente":
-    //--------------------------------------------------------------------------------------    
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Coleta os dados do formulário
     $nome = $_POST["nome"] ?? "";
     $cpf = $_POST["cpf"] ?? "";
     $email = $_POST["email"] ?? "";
     $senha = $_POST["senha"] ?? "";
-    $telefone = $_POST["telefone"];
+    $telefone = $_POST["telefone"] ?? "";
 
-    // gera o hash da senha
+    // Gera o hash da senha
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-    try {
-      Cliente::Create($pdo, $nome, $cpf, $email, $senhaHash, $telefone);
-      header("location: clientes.html");
-    } catch (Exception $e) {
-      throw new Exception($e->getMessage());
-    }
-    break;
+    // Conecta ao banco de dados
+    $pdo = mysqlConnect();
 
-    //-----------------------------------------------------------------
-  default:
-    exit("Ação não disponível");
+    try {
+        // Prepara a consulta SQL para inserir o novo usuário
+        $stmt = $pdo->prepare("INSERT INTO usuario (nome, cpf, email, senhaHash, telefone) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([$nome, $cpf, $email, $senhaHash, $telefone]);
+
+        // Redireciona ou exibe uma mensagem de sucesso
+        echo "<p>Usuário cadastrado com sucesso!</p>";
+        echo "<a href='login.html'>Fazer login</a>";
+    } catch (PDOException $e) {
+        // Trata erros de inserção
+        echo "<p>Erro ao cadastrar usuário: " . $e->getMessage() . "</p>";
+    }
+} else {
+    echo "<p>Método de requisição não suportado.</p>";
 }
+?>
