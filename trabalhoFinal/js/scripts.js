@@ -40,12 +40,7 @@ document.getElementById('form-login')?.addEventListener('submit', function(event
     const email = document.getElementById('emailLogin').value;
     const senha = document.getElementById('senhaLogin').value;
 
-    if (email === "teste@gmail.com" && senha === "senha123") {
-        alert("Login realizado com sucesso!");
-        window.location.href = "painel-interno.html"; // Redireciona para área restrita
-    } else {
-        alert("Credenciais inválidas.");
-    }
+    
 });
 
 // Função para verificar se o usuário está logado
@@ -235,3 +230,60 @@ function carregarInteresses() {
         interessesContainer.appendChild(interesseItem);
     });
 }
+
+
+
+
+//Carregar anuncio no index.
+
+document.getElementById("form-anuncio").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+
+    try {
+        const response = await fetch("criar_anuncio.php", {
+            method: "POST",
+            body: formData
+        });
+        const result = await response.json();
+
+        if (result.status === "success") {
+            // Chama a função para adicionar o novo anúncio na página
+            addAnuncioNaPagina(result.anuncio);
+            document.getElementById("mensagemAnuncio").textContent = result.message;
+        } else {
+            document.getElementById("mensagemAnuncio").textContent = result.message;
+        }
+    } catch (error) {
+        document.getElementById("mensagemAnuncio").textContent = "Erro ao enviar o formulário.";
+    }
+});
+
+function addAnuncioNaPagina(anuncio) {
+    const anunciosSection = document.getElementById("anuncios");
+
+    // Cria o card do anúncio
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const img = document.createElement("img");
+    img.src = `uploads/${anuncio.fotos[0]}`; // Exibe a primeira foto
+    img.alt = "Imagem do carro";
+    card.appendChild(img);
+
+    const h3 = document.createElement("h3");
+    h3.textContent = `${anuncio.marca} ${anuncio.modelo} ${anuncio.ano}`;
+    card.appendChild(h3);
+
+    const pLocalizacao = document.createElement("p");
+    pLocalizacao.textContent = `${anuncio.cidade}, ${anuncio.estado}`;
+    card.appendChild(pLocalizacao);
+
+    const pValor = document.createElement("p");
+    pValor.textContent = `R$ ${anuncio.valor}`;
+    card.appendChild(pValor);
+
+    anunciosSection.appendChild(card);
+}
+
