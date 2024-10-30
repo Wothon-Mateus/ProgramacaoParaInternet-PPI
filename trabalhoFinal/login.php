@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Prepara a consulta SQL para buscar o usuário pelo email
-        $stmt = $pdo->prepare("SELECT * FROM usuario WHERE email = ?");
+        $stmt = $pdo->prepare("SELECT * FROM anunciante WHERE email = ?");
         $stmt->execute([$email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 

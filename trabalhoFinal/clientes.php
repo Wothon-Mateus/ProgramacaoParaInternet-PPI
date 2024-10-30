@@ -7,7 +7,7 @@ class Clientes
   {
     $stmt = $pdo->prepare(
       <<<SQL
-      INSERT INTO cliente (nome, cpf, email, senha, telefone)
+      INSERT INTO anunciante (nome, cpf, email, senha, telefone)
       VALUES (?, ?, ?,?, ?)
       SQL
     );
