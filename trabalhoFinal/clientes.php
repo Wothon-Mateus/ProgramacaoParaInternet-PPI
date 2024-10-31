@@ -2,7 +2,7 @@
 
 class Clientes
 {
-  // Método para criar um novo produto no BD
+  // Método Para criar um novo produto no BD
   static function Create($pdo, $nome, $cpf, $email, $senha, $telefone)
   {
     $stmt = $pdo->prepare(
