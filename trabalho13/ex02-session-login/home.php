@@ -4,7 +4,8 @@ require "conexaoMysql.php";
 require "sessionVerification.php";
 
 session_start();
-// nesse momento e criado a seção 
+// Inicia uma nova sessão ou retoma a sessão existente. 
+// Isso é necessário para acessar e manipular as variáveis de sessão do usuário.
 exitWhenNotLoggedIn();
 $pdo = mysqlConnect();
 
