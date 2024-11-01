@@ -4,6 +4,7 @@ require "conexaoMysql.php";
 require "sessionVerification.php";
 
 session_start();
+// nesse momento e criado a seção 
 exitWhenNotLoggedIn();
 $pdo = mysqlConnect();
 
