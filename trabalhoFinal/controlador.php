@@ -1,9 +1,9 @@
 <?php
 
 require "conexaoMysql.php";
-require "clientes.php";
 
-$acao = $_GET['acao'];
+// Verifica se a ação foi passada via GET
+$acao = $_GET['acao'] ?? '';
 $pdo = mysqlConnect();
 
 switch ($acao) {
@@ -18,20 +18,20 @@ switch ($acao) {
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     try {
-      Cliente::Create(
-        $pdo,
-        $nome,
-        $cpf,
-        $email,
-        $senhaHash,
-        $dataNascimento,
-      );
-      header("location: clientes.html");
+      // Insere os dados na tabela Anunciante
+      $sql = "INSERT INTO anunciante (nome, cpf, email, senha, telefone) VALUES (?, ?, ?, ?, ?)";
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute([$nome, $cpf, $email, $senhaHash, $telefone]);
+
+      // Redireciona para a página de cadastro com sucesso
+      header("location: cadastro.html");
+      exit();
     } catch (Exception $e) {
-      throw new Exception($e->getMessage());
+      // Em caso de erro, exibe a mensagem
+      echo "Erro ao cadastrar: " . $e->getMessage();
+      exit();
     }
     break;
-
 
   default:
     exit("Ação não disponível");
