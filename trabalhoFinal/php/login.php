@@ -1,68 +1,60 @@
 <?php
 
-require "conexaoMysql.php";
-
-class LoginResult
+class RequestResponse
 {
   public $success;
-  public $newLocation;
+  public $detail;
 
-  function __construct($success, $newLocation)
+  function __construct($success, $detail)
   {
     $this->success = $success;
-    $this->newLocation = $newLocation;
+    $this->detail = $detail;
   }
 }
-
-function checkUserCredentials($pdo, $email, $senha)
+function checkLogin($pdo, $email, $password, &$userid)
 {
-  $sql = <<<SQL
-    SELECT senha_hash
-    FROM anunciante
-    WHERE email = ?
-    SQL;
+    $sql = <<<SQL
+        SELECT SenhaHash, Codigo
+        FROM Anunciante
+        WHERE Email = ?
+        SQL;
 
-  try {
-    // É necessário utilizar prepared statements por incluir
-    // parâmetros informados pelo usuário
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$email]);
-    $senhaHash = $stmt->fetchColumn();
-
-    if (!$senhaHash) 
-      return false; // a consulta não retornou nenhum resultado (email não encontrado)
-
-    if (!password_verify($senha, $senhaHash))
-      return false; // email e/ou senha incorreta
-      
-    // email e senha corretos
-    return true;
-  } 
-  catch (Exception $e) {
-    exit('Falha inesperada: ' . $e->getMessage());
-  }
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$email]);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        $senhaHash = $resultado['SenhaHash'];
+        $userid = $resultado['Codigo'];
+        if (!$userid) 
+        return false; 
+        if (!$senhaHash) 
+        return false; 
+      if (!password_verify($password, $senhaHash))
+        return false; // senha incorreta
+        
+      // email e senha corretos
+      return true;
+    }
+    catch (Exception $e) {
+        exit('Falha inesperada: ' . $e->getMessage());
+    }
 }
 
-$email = $_POST['email'] ?? '';
-$senha = $_POST['senha'] ?? '';
-
+require "conexaoMysql.php";
 $pdo = mysqlConnect();
-if (checkUserCredentials($pdo, $email, $senha)) {
-  // Define o parâmetro 'httponly' para o cookie de sessão, para que o cookie
-  // possa ser acessado apenas pelo navegador nas requisições http (e não por código JavaScript).
-  // Aumenta a segurança evitando que o cookie de sessão seja roubado por eventual
-  // código JavaScript proveniente de ataq. X S S.
-  $cookieParams = session_get_cookie_params();
-  $cookieParams['httponly'] = true;
-  session_set_cookie_params($cookieParams);
-  
+
+$email = $_POST["email"] ?? "";
+$password = $_POST["password"] ?? "";
+$userid = 0;
+
+if (checkLogin($pdo, $email, $password, $userid)){
   session_start();
   $_SESSION['loggedIn'] = true;
   $_SESSION['user'] = $email;
-  $response = new LoginResult(true, 'home.php');
-} 
-else
-  $response = new LoginResult(false, ''); 
-
-header('Content-Type: application/json; charset=utf-8');
+  $_SESSION['id'] = $userid;
+  $response = new RequestResponse(true, '../php/home.php');
+}
+else{
+    $response = new RequestResponse(false, ''); 
+}
 echo json_encode($response);
