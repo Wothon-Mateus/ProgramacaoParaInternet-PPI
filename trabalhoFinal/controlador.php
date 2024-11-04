@@ -2,7 +2,7 @@
 
 require "conexaoMysql.php";
 
-// Verifica se a ação foi passada via GET
+
 $acao = $_GET['acao'] ?? '';
 $pdo = mysqlConnect();
 
@@ -24,7 +24,7 @@ switch ($acao) {
       $stmt->execute([$nome, $cpf, $email, $senhaHash, $telefone]);
 
       // Redireciona para a página de cadastro com sucesso
-      header("location: cadastro.html");
+      header("location: login.html");
       exit();
     } catch (Exception $e) {
       // Em caso de erro, exibe a mensagem
