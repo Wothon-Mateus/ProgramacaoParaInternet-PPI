@@ -3,7 +3,7 @@
 require "conexaoMysql.php";
 
 
-$acao = $_GET['acao'] ?? '';
+$acao = $_POST['acao'] ?? '';
 $pdo = mysqlConnect();
 
 switch ($acao) {
