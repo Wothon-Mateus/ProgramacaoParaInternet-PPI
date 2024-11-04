@@ -28,7 +28,7 @@
     <main>
         <section id="login">
             <h2>Login</h2>
-            <form id="form-login" action="login.php" method="POST">
+            <form id="form-login" name="formLogin" method="POST">
                 <div class="form-group">
                     <label for="email">E-mail:</label>
                     <input type="email" id="emailLogin" name="email" placeholder="Digite seu e-mail" required>
@@ -41,6 +41,9 @@
                     <button type="submit">Entrar</button>
                 </div>
                 <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se aqui</a>.</p>
+                <div class="col-sm-12 d-grid">
+                    <p id="loginFailMsg" class="hide"></p>
+                </div>
             </form>
         </section>
     </main>
@@ -49,5 +52,55 @@
     <footer>
         <p>CarroFácil © 2024 - Todos os direitos reservados.</p>
     </footer>
+    <script>
+
+        // Função assíncrona que envia o formulário para o servidor e processa a resposta
+        async function sendForm(form) {
+    
+          try {
+            // Envia uma requisição POST para "login.php" com os dados do formulário
+            const response = await fetch("login.php", { method: 'post', body: new FormData(form) });
+    
+            // Verifica se a resposta do servidor está OK (status 200-299); caso contrário, lança um erro
+            if (!response.ok) throw new Error(response.statusText);
+    
+            // Aguarda a resposta em formato JSON contendo o resultado do login
+            const loginResult = await response.json();
+    
+            // Se o login for bem-sucedido, redireciona o usuário para a nova página
+            if (loginResult.success)
+              window.location = loginResult.newLocation;
+            else {
+              // Caso o login falhe, exibe uma mensagem de erro ao usuário
+              const parLoginFailMsg = document.querySelector("#loginFailMsg");
+              parLoginFailMsg.textContent = 'Dados incorretos. Por favor, tente novamente.';
+              parLoginFailMsg.classList.remove('hide');
+    
+              // Limpa o campo de senha e define o foco para ele
+              form.senha.value = "";
+              form.senha.focus();
+            }
+          }
+          catch (e) {
+            // Em caso de erro na requisição ou processamento, exibe uma mensagem de falha geral
+            const parLoginFailMsg = document.querySelector("#loginFailMsg");
+            parLoginFailMsg.textContent = 'Falha inesperada. Entre em contato o administrador do sistema.';
+            parLoginFailMsg.classList.remove('hide');
+          }
+        }
+    
+        // Captura o formulário de login e define um evento ao enviar o formulário
+        const meuForm = document.forms.formLogin;
+        meuForm.onsubmit = function (e) {
+          // Previne o envio padrão do formulário para fazer o envio via JavaScript
+          e.preventDefault();
+    
+          // Chama a função para enviar o formulário
+          sendForm(meuForm);
+        }
+    
+    
+    
+      </script>
 </body>
 </html>
