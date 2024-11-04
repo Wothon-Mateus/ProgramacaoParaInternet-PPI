@@ -14,9 +14,19 @@ switch ($acao) {
     $senha = $_POST["senha"] ?? "";
     $telefone = $_POST["telefone"] ?? "";
 
+    // Gera o hash da senha
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
     try {
-      Produto::Create($pdo, $nome, $cpf, $email, $senha, $telefone);
-    //   header("location: cadastro.html");
+      Cliente::Create(
+        $pdo,
+        $nome,
+        $cpf,
+        $email,
+        $senhaHash,
+        $dataNascimento,
+      );
+      header("location: clientes.html");
     } catch (Exception $e) {
       throw new Exception($e->getMessage());
     }
