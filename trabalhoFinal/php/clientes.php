@@ -8,7 +8,7 @@ class Cliente
     try {
       $pdo->beginTransaction();
 
-      // Inserção na tabela cliente. Repare que o campo id foi omitido por do tipo auto_increment
+      // Inserção na tabela anunciante. Repare que o campo id foi omitido por do tipo auto_increment
       // É necessário utilizar prepared statements para prevenir
       // inj. de S Q L, pois temos parâmetros fornecidos pelo usuário.
       // Uma exceção será lançada em caso de falha no prepare ou no execute.
