@@ -1,42 +1,68 @@
 <?php
-session_start(); // Inicia a sessão
-require "conexaoMysql.php"; // Inclui o arquivo de conexão
 
-// Verifica se o método de requisição é POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Coleta os dados do formulário
-    $email = $_POST["email"] ?? "";
-    $senha = $_POST["senha"] ?? "";
+require "conexaoMysql.php";
 
-    // Conecta ao banco de dados
-    $pdo = mysqlConnect();
+class LoginResult
+{
+  public $success;
+  public $newLocation;
 
-    try {
-        // Prepara a consulta SQL para buscar o usuário pelo email
-        $stmt = $pdo->prepare("SELECT * FROM anunciante WHERE email = ?");
-        $stmt->execute([$email]);
-        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // Verifica se o usuário existe e se a senha está correta
-        if ($usuario && password_verify($senha, $usuario['senhaHash'])) {
-            // Armazena os dados do usuário na sessão
-            $_SESSION['usuario_id'] = $usuario['id'];
-            $_SESSION['usuario_nome'] = $usuario['nome'];
-
-            // Redireciona para a página restrita
-            header("Location: bem_vindo.php");
-            exit();
-        } else {
-            // Mensagem de erro caso as credenciais estejam incorretas
-            echo "<p>Email ou senha incorretos!</p>";
-            echo "<a href='login.html'>Tente novamente</a>";
-        }
-    } catch (Exception $e) {
-        // Em caso de erro, mostra a mensagem de erro
-        echo "<p>Erro ao realizar login: " . $e->getMessage() . "</p>";
-        echo "<a href='login.html'>Tente novamente</a>";
-    }
-} else {
-    echo "<p>Método de requisição não suportado.</p>";
+  function __construct($success, $newLocation)
+  {
+    $this->success = $success;
+    $this->newLocation = $newLocation;
+  }
 }
-?>
+
+function checkUserCredentials($pdo, $email, $senha)
+{
+  $sql = <<<SQL
+    SELECT senha_hash
+    FROM anunciante
+    WHERE email = ?
+    SQL;
+
+  try {
+    // É necessário utilizar prepared statements por incluir
+    // parâmetros informados pelo usuário
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$email]);
+    $senhaHash = $stmt->fetchColumn();
+
+    if (!$senhaHash) 
+      return false; // a consulta não retornou nenhum resultado (email não encontrado)
+
+    if (!password_verify($senha, $senhaHash))
+      return false; // email e/ou senha incorreta
+      
+    // email e senha corretos
+    return true;
+  } 
+  catch (Exception $e) {
+    exit('Falha inesperada: ' . $e->getMessage());
+  }
+}
+
+$email = $_POST['email'] ?? '';
+$senha = $_POST['senha'] ?? '';
+
+$pdo = mysqlConnect();
+if (checkUserCredentials($pdo, $email, $senha)) {
+  // Define o parâmetro 'httponly' para o cookie de sessão, para que o cookie
+  // possa ser acessado apenas pelo navegador nas requisições http (e não por código JavaScript).
+  // Aumenta a segurança evitando que o cookie de sessão seja roubado por eventual
+  // código JavaScript proveniente de ataq. X S S.
+  $cookieParams = session_get_cookie_params();
+  $cookieParams['httponly'] = true;
+  session_set_cookie_params($cookieParams);
+  
+  session_start();
+  $_SESSION['loggedIn'] = true;
+  $_SESSION['user'] = $email;
+  $response = new LoginResult(true, 'home.php');
+} 
+else
+  $response = new LoginResult(false, ''); 
+
+header('Content-Type: application/json; charset=utf-8');
+echo json_encode($response);
