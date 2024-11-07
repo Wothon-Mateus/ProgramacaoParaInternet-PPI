@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho 14</title>
+    <style>
+        input, button {
+            display: block;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+<h1>Testando API Restful</h1>
+<form id="addressForm">
+    <label>CEP:
+        <input type="text" id="cep" name="cep">
+    </label>
+    <label>Rua:
+        <input type="text" id="rua" name="rua">
+    </label>
+    <label>Bairro:
+        <input type="text" id="bairro" name="bairro">
+    </label>
+    <label>Cidade:
+        <input type="text" id="cidade" name="cidade">
+    </label>
+</form>
+
+<button onclick="buscarEndereco()">Buscar endereço pelo CEP (GET)</button>
+<button onclick="criarEndereco()">Criar novo (POST)</button>
+<button onclick="apagarEndereco()">Apagar pelo CEP (DELETE)</button>
+<button onclick="listarEnderecos()">Listar todos os endereços</button>
+
+<div id="result"></div>
+
+<script>
+    const apiUrl = "http://localhost:8080/address";
+
+    async function buscarEndereco() {
+        const cep = document.getElementById("cep").value;
+        try {
+            const response = await fetch(`${apiUrl}/${cep}`);
+            if (response.ok) {
+                const address = await response.json();
+                document.getElementById("rua").value = address.rua;
+                document.getElementById("bairro").value = address.bairro;
+                document.getElementById("cidade").value = address.cidade;
+            } else {
+                alert("Endereço não encontrado.");
+            }
+        } catch (error) {
+            console.error("Erro ao buscar endereço:", error);
+        }
+    }
+
+    async function criarEndereco() {
+        const address = {
+            cep: document.getElementById("cep").value,
+            rua: document.getElementById("rua").value,
+            bairro: document.getElementById("bairro").value,
+            cidade: document.getElementById("cidade").value
+        };
+        try {
+            const response = await fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(address)
+            });
+            if (response.ok) {
+                alert("Endereço criado com sucesso!");
+                document.getElementById("addressForm").reset();
+            } else {
+                alert("Erro ao criar o endereço.");
+            }
+        } catch (error) {
+            console.error("Erro ao criar endereço:", error);
+        }
+    }
+
+    async function apagarEndereco() {
+        const cep = document.getElementById("cep").value;
+        try {
+            const response = await fetch(`${apiUrl}/${cep}`, {
+                method: "DELETE"
+            });
+            if (response.ok) {
+                alert("Endereço apagado com sucesso!");
+            } else {
+                alert("Endereço não encontrado.");
+            }
+        } catch (error) {
+            console.error("Erro ao apagar endereço:", error);
+        }
+    }
+
+    async function listarEnderecos() {
+        try {
+            const response = await fetch(apiUrl);
+            if (response.ok) {
+                const addresses = await response.json();
+                const resultDiv = document.getElementById("result");
+                resultDiv.innerHTML = "<h2>Endereços:</h2>";
+                addresses.forEach(address => {
+                    resultDiv.innerHTML += `<p>CEP: ${address.cep}, Rua: ${address.rua}, Bairro: ${address.bairro}, Cidade: ${address.cidade}</p>`;
+                });
+            } else {
+                alert("Erro ao listar os endereços.");
+            }
+        } catch (error) {
+            console.error("Erro ao listar endereços:", error);
+        }
+    }
+</script>
+</body>
+</html>
