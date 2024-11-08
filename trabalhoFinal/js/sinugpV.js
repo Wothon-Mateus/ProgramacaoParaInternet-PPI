@@ -47,7 +47,7 @@ async function validateForm(e) {
         xhr.onload = function () {
             if (xhr.status === 200) {
                 alert('Usuário cadastrado com sucesso!');
-                window.location = "../php/home.php"; /// Lembre de mudar 
+                window.location = "../php/home.php"; /// Lembre de mudar  AAAAAAA
             } else {
                 alert(xhr.responseText);
                 spanEmail.textContent = 'Usuário inválido. Verifique seus dados.';
