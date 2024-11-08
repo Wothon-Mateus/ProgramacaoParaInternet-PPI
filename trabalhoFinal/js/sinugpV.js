@@ -43,11 +43,11 @@ async function validateForm(e) {
         return;
     } else {
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', '../php/createUser.php');
+        xhr.open('POST', '../php/criarUsuário.php');
         xhr.onload = function () {
             if (xhr.status === 200) {
                 alert('Usuário cadastrado com sucesso!');
-                window.location = "../php/home.php";
+                window.location = "../php/home.php"; /// Lembre de mudar 
             } else {
                 alert(xhr.responseText);
                 spanEmail.textContent = 'Usuário inválido. Verifique seus dados.';
