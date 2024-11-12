@@ -6,38 +6,37 @@ var min = 0;
 var categorie = 'tudo';
 
 window.onload = function () {
-  iniciaPesquisa('', offset);
-  const prodsSection = document.getElementById("results");
-  const btnPesquisa = document.querySelector("#pesquisaBtn");
-  const campo = document.querySelector("#pesquisaForm");
-  max = 100000;
-  min = 0;
-  categorie = 'tudo';
+  iniciaPesquisa('', offset); // Inicia a pesquisa ao carregar a página
+  const prodsSection = document.getElementById("anuncios"); // Seção onde os produtos serão exibidos
+  const btnPesquisa = document.querySelector("#pesquisaBtn"); // Botão de pesquisa
+  const campo = document.querySelector("#pesquisaForm"); // Campo de entrada do formulário de pesquisa
+
   btnPesquisa.addEventListener('click', function () {
     if (campo.value.length < 3) {
       return;
     }
     prodsSection.innerHTML = '';
-    max = parseFloat(document.querySelector("#max-value").value);
-    min = parseFloat(document.querySelector("#min-value").value);
-    categorie = document.querySelector("#categories").value;
-    form = document.querySelector("#pesquisaForm").value;
+    max = parseFloat(document.querySelector("#max-value").value) || 100000;
+    min = parseFloat(document.querySelector("#min-value").value) || 0;
+    categorie = document.querySelector("#categories").value || 'tudo';
+    form = campo.value;
     offset = 0;
-    filter = document.querySelector('input[name="filter"]:checked').value;
+    filter = document.querySelector('input[name="filter"]:checked').value || 'title';
     iniciaPesquisa(form, offset);
   });
+
   campo.addEventListener("keyup", e => {
     if (e.key === "Enter") {
       if (campo.value.length < 3) {
         return;
       }
       prodsSection.innerHTML = '';
-      max = parseFloat(document.querySelector("#max-value").value);
-      min = parseFloat(document.querySelector("#min-value").value);
-      categorie = document.querySelector("#categories").value;
-      form = document.querySelector("#pesquisaForm").value;
+      max = parseFloat(document.querySelector("#max-value").value) || 100000;
+      min = parseFloat(document.querySelector("#min-value").value) || 0;
+      categorie = document.querySelector("#categories").value || 'tudo';
+      form = campo.value;
       offset = 0;
-      filter = document.querySelector('input[name="filter"]:checked').value;
+      filter = document.querySelector('input[name="filter"]:checked').value || 'title';
       iniciaPesquisa(form, offset);
     }
   });
@@ -45,14 +44,13 @@ window.onload = function () {
 
 window.onscroll = function () {
   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    iniciaPesquisa(form, offset);
+    iniciaPesquisa(form, offset); // Carrega mais produtos ao rolar a página
   }
 };
 
 function renderProducts(newProducts) {
-
-  const prodsSection = document.getElementById("results");
-  const template = document.getElementById("template");
+  const prodsSection = document.getElementById("anuncios");
+  const template = document.getElementById("template"); // Template de exibição do produto
 
   for (let product of newProducts) {
     let html = template.innerHTML
@@ -63,27 +61,23 @@ function renderProducts(newProducts) {
         .replace("{{prod-price}}", product.preco);
 
     prodsSection.insertAdjacentHTML("beforeend", html);
-};
+  }
 }
 
 function iniciaPesquisa(formlocal, offsetlocal) {
-
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "./php/busca.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.onload = function () {
 
-    // verifica o código de status retornado pelo servidor
+  xhr.onload = function () {
     if (xhr.status != 200) {
       console.error("Falha inesperada: " + xhr.responseText);
       return;
     }
 
     try {
-      // converte a string JSON para objeto JavaScript
       var anuncios = JSON.parse(xhr.responseText);
-    }
-    catch (e) {
+    } catch (e) {
       console.error("String JSON inválida: " + xhr.responseText);
       return;
     }
@@ -102,8 +96,5 @@ function iniciaPesquisa(formlocal, offsetlocal) {
     "&categorie=" + encodeURIComponent(categorie);
 
   xhr.send(data);
-
-  offset += 6;
-
+  offset += 6; // Incrementa o offset para carregamento paginado
 }
-
