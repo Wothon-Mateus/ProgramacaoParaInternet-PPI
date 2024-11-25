@@ -5,6 +5,7 @@ $pdo = mysqlConnect();
 
 class Anuncio
 {
+  
   public $titulo;
   public $descricao;
   public $preco;
