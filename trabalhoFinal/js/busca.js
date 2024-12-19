@@ -9,7 +9,7 @@ window.onload = function () {
   iniciaPesquisa('', offset); // Inicia a pesquisa ao carregar a página
   const prodsSection = document.getElementById("anuncios"); // Seção onde os produtos serão exibidos
   const btnPesquisa = document.querySelector("#pesquisaBtn"); // Botão de pesquisa
-  const campo = document.querySelector("#pesquisaForm"); // Campo de entrada do formulário de pesquisa
+  const campo = document.querySelector("#pesquisaForm"); // Campo de entrada do formulário de pesquisaa
 
   btnPesquisa.addEventListener('click', function () {
     if (campo.value.length < 3) {
