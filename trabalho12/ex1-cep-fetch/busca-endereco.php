@@ -14,7 +14,7 @@ class Endereco
   }
 }
 
-// Recebe o CEP via método POST
+// Recebe o CEP via método POST 
 $cep = $_POST['cep'] ?? '';
 
 if ($cep == '38400-100')
