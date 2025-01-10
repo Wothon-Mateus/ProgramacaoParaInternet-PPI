@@ -8,7 +8,7 @@ function mysqlConnect()
   $db_name = "if0_37069074_turbocarros";
 
   $options = [
-    PDO::ATTR_EMULATE_PREPARES => false, // desativa a execução emulada de prepared statements
+    PDO::ATTR_EMULATE_PREPARES => false, // desativa a execução  emulada de prepared statements
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
   ];
 
